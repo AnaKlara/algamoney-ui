@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -11,7 +11,7 @@ export class LancamentosPesquisaComponent {
     {
       descricao: 'Salário mensal',
       dataVencimento: '09/06/2017',
-      dataPagamento: null,
+      dataPagamento: '19/06/2017',
       valor: 6500.00,
       tipo: 'RECEITA',
       pessoa: 'João Silva',
@@ -19,14 +19,14 @@ export class LancamentosPesquisaComponent {
     {
         descricao: 'Bahamas',
         dataVencimento: '09/02/2017',
-        dataPagamento: '09/02/2017',
+        dataPagamento: '19/06/2017',
         valor: 100.32,
         tipo: 'DESPESA',
         pessoa: 'Maria Rita',
     },
     {
         descricao: 'Top Club',
-        dataVencimento: '09/06/2017',
+        dataVencimento: '19/06/2017',
         dataPagamento: null,
         valor: 120.00,
         tipo: 'RECEITA',
@@ -36,7 +36,7 @@ export class LancamentosPesquisaComponent {
         codigo: 4,
         descricao: 'CEMIG',
         dataVencimento: '09/02/2017',
-        dataPagamento: '09/02/2017',
+        dataPagamento: '19/06/2017',
         valor: 110.44,
         tipo: 'DESPESA',
         pessoa: 'Ricardo Pereira',
@@ -44,7 +44,7 @@ export class LancamentosPesquisaComponent {
     {
         descricao: 'DMAE',
         dataVencimento: '09/06/2017',
-        dataPagamento: null,
+        dataPagamento:'19/06/2017',
         valor: 200.30,
         tipo: 'DESPESA',
         pessoa:  'Josué Mariano',

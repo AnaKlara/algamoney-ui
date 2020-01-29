@@ -1,3 +1,11 @@
 .but-action{
   margin-right: 2px;
   }
+  a {
+    text-decoration: none;
+  }
+
+  a:hover, a:focus {
+    text-decoration: underline;
+    font-weight: bold;
+  }

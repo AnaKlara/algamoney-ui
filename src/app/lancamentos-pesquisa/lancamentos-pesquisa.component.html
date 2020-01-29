@@ -24,7 +24,8 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="lancamentos" [paginator]="true" [rows]="2" [responsive]="true">
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="4"
+      [responsive]="true"> <!--Propriedade do p-table que nos diz que ela será responsiva -->
         <ng-template pTemplate="header">
             <tr>
                 <th>Pessoa</th>
@@ -60,7 +61,7 @@
 
             <td class="col-valor">
               <span class="ui-column-title">Valor</span>
-              <span [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
+              <span class="values " [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
                 {{lancamento.valor}}
               </span>
             </td>

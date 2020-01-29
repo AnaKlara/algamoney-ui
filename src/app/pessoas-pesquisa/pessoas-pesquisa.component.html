@@ -33,23 +33,20 @@
         <ng-template pTemplate="body" let-pessoa>
           <tr>
             <td>
-              <span class="ui-column-title">Nome</span>
               {{pessoa.nome}}
             </td>
 
             <td>
-              <span class="ui-column-title">Cidade</span>
               {{pessoa.endereco.cidade}}
             </td>
 
             <td>
-              <span class="ui-column-title">Estado</span>
               {{pessoa.endereco.estado}}
             </td>
 
             <td>
-              <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"></a>
-              {{ pessoa.ativo ? 'Ativo' : 'Inativo'}}
+              <!--Diretiva pTooltip (PrimeNG): mostra informação adicional quando o mouse está em cima-->
+              <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar' " tooltipPosition="top">{{ pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
             </td>
 
             <td class="col-acoes">
