@@ -6,15 +6,20 @@
         <h1>Novo Lançamento</h1>
       </div>
 
+      <div class="ui-g-12">
+        <p-selectButton [options]="tipos" #tipo ></p-selectButton>
+      <!-- -->
+      </div>
+
       <div class="ui-g-6 ui-md-3 ui-fluid" >
         <label>Vencimento</label>
-        <input pInputText type="text">
+        <p-calendar dateFormat="dd/mm/yyyy" [inline]="false" [readonlyInput]="false" [showIcon]="true" ></p-calendar>
         <!-- pInputText serve para que aquele input se tone um input do primeNG-->
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid" >
-        <label>Pagamento</label>
-        <input pInputText type="text">
+        <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+        <p-calendar dateFormat="dd/mm/yyyy" [inline]="false" [readonlyInput]="false" [showIcon]="true" ></p-calendar>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid" >
@@ -41,9 +46,9 @@
       </div>
 
       <div class="ui-g-12 " >
-        <button pButton type="submit" label="Salvar"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"></button>
-        <a href="javascript:;">Voltar para a pesquisa</a>
+        <button class="but-cad" pButton type="submit" label="Salvar"></button>
+        <button class="but-cad" pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a class="but-cad" href="javascript:;">Voltar para a pesquisa</a>
       </div>
 
     </div>
