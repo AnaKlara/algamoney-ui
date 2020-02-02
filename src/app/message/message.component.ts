@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
+// 13.9
 @Component({
   selector: 'app-message',
   template: `
-    <p>
-      message works!
-    </p>
+  <div *ngIf="temErro()" class="ui-messages ui-messages-error">
+  {{ text }}
+</div>
   `,
-  styles: []
+  styles: [  ]
 })
-export class MessageComponent implements OnInit {
+export class MessageComponent {
 
-  constructor() { }
+  /*
+@input é um decorator que trata da comunicação de um componente pai comum componente filho
+Entrada para disponibilizar a variável de instância a seguir para os componentes-pai
+para transmitir dados.
+  */
+  @Input() error: string;
+  @Input() control: FormControl;
+  @Input() text: string;
 
-  ngOnInit() {
+  temErro(): boolean {
+    return this.control.hasError(this.error) && this.control.dirty;
   }
 
 }

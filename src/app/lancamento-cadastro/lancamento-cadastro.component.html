@@ -18,26 +18,22 @@
 
       <div class="ui-g-6 ui-md-3 ui-fluid" >
         <label>Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yyyy" [inline]="false" [readonlyInput]="false" [showIcon]="true" ></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true" ></p-calendar>
         <!-- pInputText serve para que aquele input se tone um input do primeNG-->
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid" >
         <label>{{tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
-        <p-calendar dateFormat="dd/mm/yyyy" [inline]="false" [readonlyInput]="false" [showIcon]="true" ></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false" [showIcon]="true" ></p-calendar>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid" >
         <label>Descrição {{ descricao.errors | json }}</label>
         <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="5">
-
         <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
-        <div *ngIf="descricao.hasError('required') && descricao.dirty" class="ui-messages ui-messages-error">
-          Informe uma descrição.
-        </div>
-        <div *ngIf="descricao.hasError('minlength') && descricao.dirty" class="ui-messages ui-messages-error">
-          Mínimo de {{descricao.errors.minlength.requiredLength}} caracteres. Você escreveu apenas {{descricao.errors.minlength.actualLength}}.
-        </div>
+        <app-message [control]="descricao" error="required" text="Informe uma descrição."></app-message>
+        <app-message [control]="descricao" error="minlength" text="Mínimo de {{descricao.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{descricao.errors?.minlength?.actualLength}}"></app-message>
+
       </div>
       <!--Quando adicionamos a diretiva ngModelo angular passa a enxergar o input,
       passa a entender que aquele input é algo que ele tem que gerenciar
