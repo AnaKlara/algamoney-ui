@@ -18,45 +18,7 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="pessoas" [paginator]="true" [rows]="4" [responsive]="true">
-
-        <ng-template let-pessoa  pTemplate="header">
-            <tr>
-                <th>Nome</th>
-                <th>Cidade</th>
-                <th>Estado</th>
-                <th>Status</th>
-                <th class="col-valor-header">Ações</th>
-            </tr>
-        </ng-template>
-
-        <ng-template pTemplate="body" let-pessoa>
-          <tr>
-            <td>
-              {{pessoa.nome}}
-            </td>
-
-            <td>
-              {{pessoa.endereco.cidade}}
-            </td>
-
-            <td>
-              {{pessoa.endereco.estado}}
-            </td>
-
-            <td>
-              <!--Diretiva pTooltip (PrimeNG): mostra informação adicional quando o mouse está em cima-->
-              <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar' " tooltipPosition="top">{{ pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
-            </td>
-
-            <td class="col-acoes">
-              <button class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="bottom"></button>
-              <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"></button>
-            </td>
-          </tr>
-        </ng-template>
-    </p-table>
-
+      <app-pessoas-grid [pessoas]="pessoas" ></app-pessoas-grid>
     </div>
 
     <div class="ui-g-12">

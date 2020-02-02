@@ -1,0 +1,80 @@
+<div class="container">
+  <form autocomplete="off" #pessoaForm="ngForm"  >
+    <div class="ui-g">
+
+      <div class="ui-g-12">
+        <h1>Cadastro de Pessoa</h1>
+      </div>
+
+      <div class="ui-g-12 ui-md-12 ui-fluid" >
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5">
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <app-message [control]="nome" error="required" text="Informe um nome."></app-message>
+        <app-message [control]="nome" error="minlength" text="Mínimo de {{nome.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{nome.errors?.minlength?.actualLength}}"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid" >
+        <label>Logradouro</label>
+        <input pInputText type="text" name="logradouro" ngModel  #logradouro="ngModel" required minlength="5">
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <app-message [control]="logradouro" error="required" text="Informe um logradouro"></app-message>
+        <app-message [control]="logradouro" error="minlength" text="Mínimo de {{logradouro.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{logradouro.errors?.minlength?.actualLength}}"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid" >
+        <label>Número</label>
+        <input pInputText type="text" name="numero" ngModel #numero="ngModel" required>
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <app-message [control]="numero" error="required" text="Informe um número."></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid" >
+        <label>Complemento</label>
+        <input pInputText type="text" name="complemento" ngModel #complemento="ngModel">
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid" >
+        <label>Bairro</label>
+        <input pInputText type="text" name="bairro" ngModel #bairro="ngModel" required minlength="5">
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <app-message [control]="bairro" error="required" text="Informe um bairro"></app-message>
+        <app-message [control]="bairro" error="minlength" text="Mínimo de {{bairro.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{bairro.errors?.minlength?.actualLength}}"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid" >
+        <label>CEP</label>
+        <p-inputMask name="cep" ngModel #cep="ngModel" mask="99.999-999" required></p-inputMask>
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <app-message [control]="cep" error="required" text="Informe um CEP válido."></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid" >
+        <label>Cidade</label>
+        <input pInputText type="text" name="cidade" ngModel #cidade="ngModel" required minlength="5">
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <app-message [control]="cidade" error="required" text="Informe uma cidade."></app-message>
+        <app-message [control]="cidade" error="minlength" text="Mínimo de {{cidade.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{cidade.errors?.minlength?.actualLength}}"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid" >
+        <label>Estado</label>
+        <input pInputText type="text" name="estado" ngModel #estado="ngModel" required minlength="5">
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <app-message [control]="estado" error="required" text="Informe um estado."></app-message>
+        <app-message [control]="estado" error="minlength" text="Mínimo de {{estado.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{estado.errors?.minlength?.actualLength}}"></app-message>
+      </div>
+
+
+
+      <!-- Botões  -->
+      <div class="ui-g-12 " >
+        <button class="but-cad" pButton type="submit" label="Salvar" [disabled]="pessoaForm.invalid" ></button>
+
+        <button class="but-cad" pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
+
+    </div>
+  </form>
+</div>
