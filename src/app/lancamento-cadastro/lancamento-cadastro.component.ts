@@ -6,6 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lancamento-cadastro.component.css']
 })
 export class LancamentoCadastroComponent  implements OnInit{
+// tipos -> variável de instância
+tipos = [
+  { label: 'Receita', value: 'RECEITA'},
+  { label: 'Despesa', value: 'DESPESA'}
+  ];
+
+  categorias = [
+    {label: 'Alimentação', value: 1},
+    {label: 'Transporte', value: 2},
+    {label: 'Manutenção', value: 3},
+  ];
+
+  pessoas = [
+  {label: 'João da Silva', value: 1},
+  {label: 'Sebastião Souza', value: 2},
+  {label: 'Maria Abadia', value: 3}
+  ];
 
   ngOnInit() {
 
@@ -13,9 +30,8 @@ export class LancamentoCadastroComponent  implements OnInit{
 
 constructor() {}
 
-tipos =[
-{ label:"Receita",value:"RECEITA"},
-{ label:"Despesa",value:"DESPESA"}
-];
+
+
+
 
 }

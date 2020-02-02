@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form>
+  <form autocomplete="off">
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>Novo Lançamento</h1>
@@ -8,7 +8,12 @@
 
       <div class="ui-g-12">
         <p-selectButton [options]="tipos" #tipo ></p-selectButton>
-      <!-- -->
+      <!--
+        p-selectButton -> componente do primeNG
+        options -> propriedade
+        [options] -> propertie binding
+        tipos -> propriedade do componente lancamento-cadastro compatível com a propriedade options
+      -->
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid" >
@@ -23,21 +28,38 @@
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid" >
-        <label>Descrição</label>
-        <input pInputText type="text">
+        <label>Descrição {{ descricao.errors | json }}</label>
+        <input pInputText type="text" name="descricao" ngModel #descricao="ngModel" required minlength="5">
+
+        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
+        <div *ngIf="descricao.hasError('required') && descricao.dirty" class="ui-messages ui-messages-error">
+          Informe uma descrição.
+        </div>
+        <div *ngIf="descricao.hasError('minlength') && descricao.dirty" class="ui-messages ui-messages-error">
+          Mínimo de {{descricao.errors.minlength.requiredLength}} caracteres. Você escreveu apenas {{descricao.errors.minlength.actualLength}}.
+        </div>
       </div>
+      <!--Quando adicionamos a diretiva ngModelo angular passa a enxergar o input,
+      passa a entender que aquele input é algo que ele tem que gerenciar
+
+      a variável descricao recebe o valor capturado pelo ngModel, asseim, teremos acesso
+      ao conteúdo que o ngModel captura
+      -->
+
       <div class="ui-g-6 ui-md-3 ui-fluid" >
         <label>Valor</label>
-        <input placeholder="0,00" pInputText type="text">
+        <input currencyMask name="valor" pInputText placeholder="0,00" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative:false}" ngModel />
+        <!--Diretiva currency mask para tratar dados monetários-->
+        <!--Toda vez que adicionamos o ngModel é obrigatório colocar também o atributo HTML name=""-->
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid" >
         <label>Categoria</label>
-        <input pInputText type="text">
+        <p-dropdown [options]="categorias" placeholder="Selecione" #categoria></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid" >
         <label>Pessoa</label>
-        <input pInputText type="text">
+        <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione" #pessoa></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid" >
