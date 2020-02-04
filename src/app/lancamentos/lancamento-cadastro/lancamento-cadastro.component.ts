@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-lancamento-cadastro',
   templateUrl: './lancamento-cadastro.component.html',
   styleUrls: ['./lancamento-cadastro.component.css']
 })
-export class LancamentoCadastroComponent  implements OnInit{
+export class LancamentoCadastroComponent {
 // tipos -> variável de instância
 tipos = [
   { label: 'Receita', value: 'RECEITA'},
@@ -23,15 +23,5 @@ tipos = [
   {label: 'Sebastião Souza', value: 2},
   {label: 'Maria Abadia', value: 3}
   ];
-
-  ngOnInit() {
-
-  }
-
-constructor() {}
-
-
-
-
 
 }
