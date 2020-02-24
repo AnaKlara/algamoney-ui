@@ -11,7 +11,7 @@
         <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="5">
         <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
         <app-message [control]="nome" error="required" text="Informe um nome."></app-message>
-        <app-message [control]="nome" error="minlength" text="Mínimo de {{nome.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{nome.errors?.minlength?.actualLength}}"></app-message>
+        <app-message [control]="nome" error="minlength" text="Mínimo de {{nome.errors?.minlength?.requiredLength}} caracteres."></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid" >
@@ -19,7 +19,7 @@
         <input pInputText type="text" name="logradouro" ngModel  #logradouro="ngModel" required minlength="5">
         <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
         <app-message [control]="logradouro" error="required" text="Informe um logradouro"></app-message>
-        <app-message [control]="logradouro" error="minlength" text="Mínimo de {{logradouro.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{logradouro.errors?.minlength?.actualLength}}"></app-message>
+        <app-message [control]="logradouro" error="minlength" text="Mínimo de {{logradouro.errors?.minlength?.requiredLength}} caracteres."></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid" >

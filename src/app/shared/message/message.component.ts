@@ -9,7 +9,12 @@ import { FormControl } from '@angular/forms';
   {{ text }}
 </div>
   `,
-  styles: [  ]
+  styles: [`
+  .ui-messages-error {
+    margin: 0;
+    margin-top: 4px;
+  }
+`]
 })
 export class MessageComponent {
 
