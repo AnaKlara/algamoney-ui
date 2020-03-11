@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './lancamentos-pesquisa.component.html',
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
-export class LancamentosPesquisaComponent implements OnInit{
+export class LancamentosPesquisaComponent implements OnInit {
 
+  descricao: string;
   lancamentos = [  ];
+
+
+
 
   // vamos injetar o serviço de busca por lançamentos
 constructor(private lancamentoService: LancamentoService ) { }
@@ -18,7 +22,7 @@ ngOnInit() {
 }
 
 pesquisar() {
-this.lancamentoService.pesquisar()
+this.lancamentoService.pesquisar({descricao: this.descricao})
   .then(lancamentos => this.lancamentos = lancamentos);
 }
 
