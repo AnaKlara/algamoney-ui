@@ -17,7 +17,6 @@ export class LancamentoService {
 
   constructor(private http: HttpClient) { }
 
-
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
                                     // admin@algamoney.com:admin base64 encoded

@@ -26,7 +26,11 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="lancamentos" [paginator]="true" [rows]="5" [responsive]="true">
+      <p-table [value]="lancamentos" [paginator]="true"
+      [rows]="filtro.itensPorPagina" [responsive]="true"
+      [lazy]="true" [totalRecords]="totalRegistros"
+      (onLazyLoad)="aoMudarPagina($event)"
+      >
         <!--Propriedade do p-table que nos diz que ela será responsiva -->
         <ng-template pTemplate="header">
           <tr>
