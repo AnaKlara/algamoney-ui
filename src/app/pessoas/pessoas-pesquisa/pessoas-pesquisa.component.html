@@ -5,20 +5,64 @@
     <div class="ui-g-12">
       <h1>Pessoas</h1>
     </div>
+    <form autocomplete="off" (submit)="pesquisar()">
+      <div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input type="text" pInputText name="nome" [(ngModel)]="filtro.nome">
+      </div>
 
-    <div class="ui-g-12 ui-fluid"  >
-      <label>Nome</label>
-      <input type="text" pInputText />
-    </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar" ></button>
+      </div>
+    </form>
 
-    <div class="ui-g-12">
-      <button pButton type="submit" label="Pesquisar" ></button>
-    </div>
+
   </div>
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <app-pessoas-grid [pessoas]="pessoas" ></app-pessoas-grid>
+      <p-table [value]="pessoas" [paginator]="true"
+      [rows]="filtro.itensPorPagina" [responsive]="true"
+      [lazy]="true" [totalRecords]="totalRegistros"
+      (onLazyLoad)="aoMudarPagina($event)"
+      >
+
+        <ng-template let-pessoa  pTemplate="header">
+            <tr>
+                <th>Nome</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Status</th>
+                <th class="col-valor-header">Ações</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-pessoa>
+          <tr>
+            <td>
+              {{pessoa.nome}}
+            </td>
+
+            <td>
+              {{pessoa.endereco.cidade}}
+            </td>
+
+            <td>
+              {{pessoa.endereco.estado}}
+            </td>
+
+            <td>
+              <!--Diretiva pTooltip (PrimeNG): mostra informação adicional quando o mouse está em cima-->
+              <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar' " tooltipPosition="top">{{ pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
+            </td>
+
+            <td class="col-acoes">
+              <button class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="bottom"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
 
     <div class="ui-g-12">
