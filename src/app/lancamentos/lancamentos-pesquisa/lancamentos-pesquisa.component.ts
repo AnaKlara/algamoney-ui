@@ -1,7 +1,7 @@
 import { LancamentoService, LancamentoFiltro  } from './../lancamento.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent } from 'primeng/primeng';
+import { LazyLoadEvent, Table } from 'primeng/primeng';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -14,6 +14,9 @@ export class LancamentosPesquisaComponent implements OnInit {
   lancamentos = [  ];
   filtro = new LancamentoFiltro();
   totalRegistros = 0;
+  // a propriedade static diz ao Angular em que momento as mudanças
+  // deverão ser detectadas.
+  @ViewChild('tabela', {static: true}) grid: Table;
 
   /*
   descricao: string;
@@ -49,4 +52,11 @@ pesquisar(pagina = 0) {
     this.pesquisar(pagina);
   }
 
+
+  excluir(lancamento: any) {
+    this.lancamentoService.excluir(lancamento.codigo)
+      .then(() => {
+        this.grid.reset();
+      });
+  }
 }

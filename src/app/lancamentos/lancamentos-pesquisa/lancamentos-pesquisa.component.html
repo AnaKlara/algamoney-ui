@@ -11,10 +11,12 @@
 
       <div class="ui-g-12 ui-fluid ">
         <label style="display: block;"> Vencimento</label>
-        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width:'95px' }" name="vancimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio" ></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width:'95px' }" name="vancimentoInicio"
+          [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
 
         <label>Até</label>
-        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width:'95px' }" name="vancimentoFim" [(ngModel)]="filtro.dataVencimentoFim" ></p-calendar>
+        <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width:'95px' }" name="vancimentoFim"
+          [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
 
       </div>
 
@@ -26,12 +28,10 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="lancamentos" [paginator]="true"
-      [rows]="filtro.itensPorPagina" [responsive]="true"
-      [lazy]="true" [totalRecords]="totalRegistros"
-      (onLazyLoad)="aoMudarPagina($event)"
-      >
-        <!--Propriedade do p-table que nos diz que ela será responsiva -->
+      <p-table [value]="lancamentos" [paginator]="true" emptyMessage="Nenhum lançamento encontrado"
+        [rows]="filtro.itensPorPagina" [responsive]="true" [lazy]="true" [totalRecords]="totalRegistros"
+        (onLazyLoad)="aoMudarPagina($event)" #tabela>
+
         <ng-template pTemplate="header">
           <tr>
             <th>Pessoa</th>
@@ -42,39 +42,50 @@
             <th class="col-valor-header"> Ações</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-lancamento>
+
+        <ng-template pTemplate="body">
           <tr>
             <td>
-              <span class="ui-column-title">Pessoa</span>
-              {{lancamento.pessoa}}
+              <ng-template let-lanc="rowData" pTemplate="body">
+                <span class="ui-column-title">{{lancamento.pessoa}}</span>
+              </ng-template>
             </td>
 
             <td>
-              <span class="ui-column-title">Descrição</span>
-              {{lancamento.descricao}}
+              <ng-template let-lanc="rowData" pTemplate="body">
+                <span class="ui-column-title">{{lancamento.descricao}}</span>
+              </ng-template>
             </td>
 
             <td [ngClass]="{'col-data': true}">
-              <span class="ui-column-title">Vencimento</span>
-              {{lancamento.dataVencimento | date:"MM/dd/y" }}
+              <ng-template let-lanc="rowData" pTemplate="body">
+                <span class="ui-column-title">{{lancamento.dataVencimento | date:"MM/dd/y" }}</span>
+              </ng-template>
             </td>
 
             <td class="col-data">
-              <span class="ui-column-title">Pagamento</span>
-              {{lancamento.dataPagamento | date:"MM/dd/y" }}
+              <ng-template let-lanc="rowData" pTemplate="body">
+                <span class="ui-column-title">{{lancamento.dataPagamento | date:"MM/dd/y" }}</span>
+              </ng-template>
             </td>
 
             <td class="col-valor">
               <span class="ui-column-title">Valor</span>
-              <span class="values " [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
-                {{lancamento.valor | currency:'BRL'}}
-              </span>
+              <ng-template let-lanc="rowData" pTemplate="body">
+                <span class="values " [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
+                  {{lancamento.valor | currency:'BRL'}}
+                </span>
+              </ng-template>
             </td>
 
             <td class="col-acoes">
-              <button class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar"
-                tooltipPosition="bottom"></button>
-              <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"></button>
+              <ng-template let-lanc="rowData" pTemplate="body">
+                <a class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar"
+                  tooltipPosition="bottom"></a>
+
+                <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"
+                  (click)="excluir(lanc)"></button>
+              </ng-template>
             </td>
           </tr>
         </ng-template>

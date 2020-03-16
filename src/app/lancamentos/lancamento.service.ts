@@ -56,4 +56,15 @@ export class LancamentoService {
       });
   }
 
+
+  excluir(codigo: number): Promise<void> {
+
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    // admin@algamoney.com:admin base64 encoded
+
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers })
+          .toPromise()
+          .then(() => null);
+  }
+
 }
