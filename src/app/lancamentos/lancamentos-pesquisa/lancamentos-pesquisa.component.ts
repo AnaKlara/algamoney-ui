@@ -1,4 +1,4 @@
-import { LancamentoService } from './../lancamento.service';
+import { LancamentoService, LancamentoFiltro  } from './../lancamento.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LancamentosPesquisaComponent implements OnInit {
 
-  descricao: string;
+  // variáveis de instância
   lancamentos = [  ];
+  filtro = new LancamentoFiltro();
+  totalRegistros = 0;
 
+  /*
+  descricao: string;
+  dataVencimentoInicio: Date;
+  dataVencimentoFim: Date;
+  */
 
 
 
@@ -22,8 +29,12 @@ ngOnInit() {
 }
 
 pesquisar() {
-this.lancamentoService.pesquisar({descricao: this.descricao})
-  .then(lancamentos => this.lancamentos = lancamentos);
-}
+
+  this.lancamentoService.pesquisar(this.filtro)
+    .then(resultado => {
+      this.lancamentos = resultado.lancamentos;
+
+    });
+  }
 
 }
