@@ -14,6 +14,9 @@ import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 
 
+import { ConfirmationService } from 'primeng';
+import { ConfirmDialogModule } from 'primeng';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +27,15 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
     HttpClientModule,
 
     ToastyModule.forRoot(),
+    ConfirmDialogModule,
+
 
     CoreModule,
     LancamentosModule,
     PessoasModule
 
   ],
-  providers: [LancamentoService, PessoaService ],
+  providers: [LancamentoService, PessoaService, ConfirmationService ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
