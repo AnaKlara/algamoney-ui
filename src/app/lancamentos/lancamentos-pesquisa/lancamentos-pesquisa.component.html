@@ -9,16 +9,17 @@
         <input type="text" pInputText name="descricao" [(ngModel)]="filtro.descricao">
       </div>
 
-      <div class="ui-g-12 ui-fluid ">
-        <label style="display: block;"> Vencimento</label>
+      <div class="ui-g-6 ">
+        <label> Vencimento</label>
         <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width:'95px' }" name="vancimentoInicio"
           [(ngModel)]="filtro.dataVencimentoInicio"></p-calendar>
-
-        <label>Até</label>
+      </div>
+      <div class="ui-g-6 ">
+        <label >Até</label>
         <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width:'95px' }" name="vancimentoFim"
           [(ngModel)]="filtro.dataVencimentoFim"></p-calendar>
+        </div>
 
-      </div>
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Pesquisar"></button>
@@ -68,7 +69,7 @@
             <td class="col-valor">
               <span class="ui-column-title">Valor</span>
               <span class="values " [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
-                {{lancamento.valor | currency:'BRL'}}
+                {{lancamento.valor | number:'1.2-2' }}
               </span>
             </td>
 
