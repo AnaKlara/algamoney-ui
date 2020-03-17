@@ -43,50 +43,46 @@
           </tr>
         </ng-template>
 
-        <ng-template pTemplate="body">
+        <ng-template pTemplate="body" let-lancamento>
           <tr>
             <td>
-              <ng-template let-lanc="rowData" pTemplate="body">
-                <span class="ui-column-title">{{lancamento.pessoa}}</span>
-              </ng-template>
+              <span class="ui-column-title">Pessoa</span>
+              {{lancamento.pessoa}}
             </td>
 
             <td>
-              <ng-template let-lanc="rowData" pTemplate="body">
-                <span class="ui-column-title">{{lancamento.descricao}}</span>
-              </ng-template>
+              <span class="ui-column-title">Descrição</span>
+              {{lancamento.descricao}}
             </td>
 
             <td [ngClass]="{'col-data': true}">
-              <ng-template let-lanc="rowData" pTemplate="body">
-                <span class="ui-column-title">{{lancamento.dataVencimento | date:"MM/dd/y" }}</span>
-              </ng-template>
+              <span class="ui-column-title">Vencimento</span>
+              {{lancamento.dataVencimento | date:"MM/dd/y" }}
             </td>
 
             <td class="col-data">
-              <ng-template let-lanc="rowData" pTemplate="body">
-                <span class="ui-column-title">{{lancamento.dataPagamento | date:"MM/dd/y" }}</span>
-              </ng-template>
+              <span class="ui-column-title">Pagamento</span>
+              {{lancamento.dataPagamento | date:"MM/dd/y" }}
             </td>
 
             <td class="col-valor">
               <span class="ui-column-title">Valor</span>
-              <ng-template let-lanc="rowData" pTemplate="body">
-                <span class="values " [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
-                  {{lancamento.valor | currency:'BRL'}}
-                </span>
-              </ng-template>
+              <span class="values " [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">
+                {{lancamento.valor | currency:'BRL'}}
+              </span>
             </td>
 
+
             <td class="col-acoes">
-              <ng-template let-lanc="rowData" pTemplate="body">
+
                 <a class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar"
                   tooltipPosition="bottom"></a>
 
                 <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"
-                  (click)="excluir(lanc)"></button>
-              </ng-template>
+                  (click)="excluir(lancamento)"></button>
             </td>
+
+
           </tr>
         </ng-template>
       </p-table>

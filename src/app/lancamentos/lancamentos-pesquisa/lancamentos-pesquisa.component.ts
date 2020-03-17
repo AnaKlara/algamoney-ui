@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, Table } from 'primeng/primeng';
 
+import { ToastyService } from 'ng2-toasty';
+
 @Component({
   selector: 'app-lancamentos-pesquisa',
   templateUrl: './lancamentos-pesquisa.component.html',
@@ -27,7 +29,10 @@ export class LancamentosPesquisaComponent implements OnInit {
 
 
   // vamos injetar o serviço de busca por lançamentos
-constructor(private lancamentoService: LancamentoService ) { }
+constructor(
+  private lancamentoService: LancamentoService,
+  private toasty: ToastyService
+  ) { }
 
 ngOnInit() {
   // this.pesquisar(); o evento Lazyload já dispara a chamada da função automaticamente
@@ -45,8 +50,7 @@ pesquisar(pagina = 0) {
   }
 
 
-
-  aoMudarPagina( event: LazyLoadEvent ){
+  aoMudarPagina( event: LazyLoadEvent ) {
 
     const pagina = event.first / event.rows;
     this.pesquisar(pagina);
@@ -58,5 +62,7 @@ pesquisar(pagina = 0) {
       .then(() => {
         this.grid.reset();
       });
+
+    this.toasty.success('Lançamento excluído com sucesso!');
   }
 }
