@@ -29,8 +29,10 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="lancamentos" [paginator]="true" emptyMessage="Nenhum lançamento encontrado"
-        [rows]="filtro.itensPorPagina" [responsive]="true" [lazy]="true" [totalRecords]="totalRegistros"
+      <p-table [value]="lancamentos" [paginator]="true"
+      emptyMessage="Nenhum lançamento encontrado"
+        [rows]="filtro.itensPorPagina" [responsive]="true"
+        [lazy]="true" [totalRecords]="totalRegistros"
         (onLazyLoad)="aoMudarPagina($event)" #tabela>
 
         <ng-template pTemplate="header">

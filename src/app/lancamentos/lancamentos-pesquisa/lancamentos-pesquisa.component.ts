@@ -61,7 +61,7 @@ pesquisar(pagina = 0) {
   }
 
 
-  confirmarExclusao(lancamento: any){
+  confirmarExclusao(lancamento: any) {
     this.confirmation.confirm({
       message: 'Tem certeza que dezeja excluir?',
       accept: () => {

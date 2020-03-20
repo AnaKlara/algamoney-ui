@@ -44,7 +44,8 @@ export class PessoaService {
           totalElementos : response['totalElements']
         }
         return resultado;
-      });
+      }
+    );
   }
 
 
@@ -70,5 +71,14 @@ export class PessoaService {
   }
 
 
+  excluir(codigo: number): Promise<void> {
+
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    // admin@algamoney.com:admin base64 encoded
+
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers })
+          .toPromise()
+          .then(() => null);
+  }
 
 }
