@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CategoriaService } from './../categorias/categoria.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,7 @@ registerLocaleData(localePt);
   declarations: [ NavbarComponent ],
   imports: [
     CommonModule,
+    RouterModule,
 
     ToastyModule.forRoot(),
     ConfirmDialogModule,

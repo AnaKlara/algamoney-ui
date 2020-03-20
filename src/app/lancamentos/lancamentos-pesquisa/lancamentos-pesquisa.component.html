@@ -79,7 +79,7 @@
             <td class="col-acoes">
 
                 <a class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar"
-                  tooltipPosition="bottom"></a>
+                  tooltipPosition="bottom" [routerLink]="['/lancamentos',lancamento.codigo]"></a>
 
                 <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"
                   (click)="confirmarExclusao(lancamento)"></button>
@@ -94,7 +94,7 @@
   </div>
 
   <div class="ui-g-12">
-    <a pButton label="Novo lançamento"></a>
+    <a pButton routerLink="/lancamentos/novo" label="Novo lançamento"></a>
   </div>
 
 </div>
