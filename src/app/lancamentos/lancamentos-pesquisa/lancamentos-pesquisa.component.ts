@@ -31,18 +31,20 @@ export class LancamentosPesquisaComponent implements OnInit {
 
 
   // vamos injetar o serviço de busca por lançamentos
-constructor(
-  private lancamentoService: LancamentoService,
-  private toasty: ToastyService,
-  private confirmation: ConfirmationService,
-  private errorHandler: ErrorHandlerService
+  constructor(
+    private lancamentoService: LancamentoService,
+    private toasty: ToastyService,
+    private confirmation: ConfirmationService,
+    private errorHandler: ErrorHandlerService
   ) { }
 
-ngOnInit() {
-  // this.pesquisar(); o evento Lazyload já dispara a chamada da função automaticamente
-}
+  ngOnInit() {
+    // this.pesquisar(); o evento Lazyload já dispara a chamada da função automaticamente
+  }
 
-pesquisar(pagina = 0) {
+
+
+  pesquisar(pagina = 0) {
 
   this.filtro.pagina = pagina;
 
