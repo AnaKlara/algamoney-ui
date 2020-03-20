@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import * as moment from 'moment';
+import { Lancamento } from '../core/model';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -65,6 +66,22 @@ export class LancamentoService {
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers })
           .toPromise()
           .then(() => null);
+  }
+
+
+  adicionar(lancamento: Lancamento): Promise<Lancamento> {
+    lancamento.dataPagamento = moment(lancamento.dataPagamento).format('DD/MM/YYYY');
+    lancamento.dataVencimento = moment(lancamento.dataVencimento).format('DD/MM/YYYY');
+
+    console.log(lancamento);
+
+    const headers = new HttpHeaders()
+    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+    // admin@algamoney.com:admin base64 encoded
+    .append('Content-Type', 'application/json');
+
+    return this.http.post<Lancamento>(this.lancamentosUrl, lancamento, { headers })
+      .toPromise();
   }
 
 }
