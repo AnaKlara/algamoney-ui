@@ -37,7 +37,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid" >
-        <label>Descrição {{ descricao.errors | json }}</label>
+        <label>Descrição </label>
         <input pInputText type="text" name="descricao"
         ngModel #descricao="ngModel" required minlength="5"
         [(ngModel)]="lancamento.descricao"
