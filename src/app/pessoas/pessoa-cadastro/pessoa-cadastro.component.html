@@ -3,7 +3,7 @@
     <div class="ui-g">
 
       <div class="ui-g-12">
-        <h1>Cadastro de Pessoa</h1>
+        <h1>{{ editando ? 'Atualização' : 'Cadastro' }} de Pessoa</h1>
       </div>
 
       <div class="ui-g-12 ui-md-12 ui-fluid" >
@@ -65,14 +65,13 @@
         <app-message [control]="estado" error="minlength" text="Mínimo de {{estado.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{estado.errors?.minlength?.actualLength}}"></app-message>
       </div>
 
-
-
       <!-- Botões  -->
       <div class="ui-g-12 " >
-        <button class="but-cad" pButton type="submit" label="Salvar" [disabled]="pessoaForm.invalid" ></button>
+        <button class="but-cad" pButton type="submit" label="Salvar" [disabled]="pessoaForm.valid" ></button>
 
         <button class="but-cad" pButton type="button" label="Novo" class="ui-button-info"></button>
-        <a href="javascript:;">Voltar para a pesquisa</a>
+
+        <a routerLink="/pessoas" >Voltar para a pesquisa</a>
       </div>
 
     </div>

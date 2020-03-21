@@ -19,6 +19,7 @@ export class PessoasPesquisaComponent implements OnInit {
 
   @ViewChild('tabela', {static: true}) grid: Table;
 
+
   // vamos injetar o serviço de busca por pessoas
 constructor(
   private pessoaService: PessoaService,
@@ -29,9 +30,9 @@ constructor(
 
   ngOnInit() {
       // this.pesquisar(); o evento Lazyload já dispara a chamada da função automaticamente
-    }
+  }
 
-pesquisar(pagina = 0) {
+  pesquisar(pagina = 0) {
 
   this.filtro.pagina = pagina;
 
@@ -42,8 +43,6 @@ pesquisar(pagina = 0) {
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
-
-
 
 
   aoMudarPagina( event: LazyLoadEvent ) {
@@ -73,4 +72,22 @@ pesquisar(pagina = 0) {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
+
+  atualizaPropAtivo(codigo: number, pessoaStatus: boolean) {
+
+    let setTo: boolean;
+    if (pessoaStatus) {
+      setTo = false;
+    } else {
+      setTo = true;
+    }
+
+    this.pessoaService.atualizaPropiedadeAtivo(codigo, setTo)
+    .then(  () => {
+      this.toasty.success(`Pessoa atualizada com sucesso!`);
+      this.pesquisar(this.filtro.pagina);
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
 }

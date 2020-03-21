@@ -42,8 +42,6 @@ export class LancamentosPesquisaComponent implements OnInit {
     // this.pesquisar(); o evento Lazyload já dispara a chamada da função automaticamente
   }
 
-
-
   pesquisar(pagina = 0) {
 
   this.filtro.pagina = pagina;

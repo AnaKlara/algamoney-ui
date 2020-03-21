@@ -97,4 +97,40 @@ export class PessoaService {
   }
 
 
+  atualizar(pessoa: Pessoa): Promise<Pessoa> {
+
+    const headers = new HttpHeaders()
+    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+    // admin@algamoney.com:admin base64 encoded
+    .append('Content-Type', 'application/json');
+
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa, { headers })
+      .toPromise()
+      .then(response => {
+        const pessoaAlterada = response as Pessoa;
+        return pessoaAlterada;
+      });
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Pessoa> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+                                    // admin@algamoney.com:admin base64 encoded
+
+    return this.http.get(`${this.pessoasUrl}/${codigo}`, { headers }) // {headers: headers, params:params}
+      .toPromise()
+      .then();
+  }
+
+  atualizaPropiedadeAtivo(codigo: number , setTo: boolean) {
+    const headers = new HttpHeaders()
+    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+    // admin@algamoney.com:admin base64 encoded
+    .append('Content-Type', 'application/json');
+
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${codigo}/ativo`, setTo, { headers })
+      .toPromise()
+      .then( status => {
+        return status;
+      });
+  }
 }

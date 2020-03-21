@@ -22,6 +22,7 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
     CommonModule,
     FormsModule,
     RouterModule,
+    RouterModule,
 
     InputTextModule,
     ButtonModule,

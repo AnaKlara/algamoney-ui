@@ -54,11 +54,13 @@
 
             <td>
               <!--Diretiva pTooltip (PrimeNG): mostra informação adicional quando o mouse está em cima-->
-              <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar' " tooltipPosition="top">{{ pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
+              <a (click)="atualizaPropAtivo(pessoa.codigo, pessoa.ativo)" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar' " tooltipPosition="top">{{ pessoa.ativo ? 'Ativo' : 'Inativo'}}</a>
             </td>
 
             <td class="col-acoes">
-              <button class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="bottom"></button>
+              <button class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar"
+              tooltipPosition="bottom" [routerLink]="['/pessoas',pessoa.codigo]" ></button>
+
               <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"
                   (click)="confirmarExclusao(pessoa)"></button>
             </td>
@@ -68,7 +70,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Nova Pessoa"></a>
+      <a pButton routerLink="/pessoas/nova" label="Nova Pessoa"></a>
     </div>
 
 
