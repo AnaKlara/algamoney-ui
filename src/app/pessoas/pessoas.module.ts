@@ -33,8 +33,9 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
     SharedModule
   ],
   exports: [
-    PessoaCadastroComponent,
-    PessoasPesquisaComponent
+    // PessoaCadastroComponent,
+    // PessoasPesquisaComponent
+    // utilizando o router não é necessário exportar os  componentes
   ]
 })
 export class PessoasModule { }

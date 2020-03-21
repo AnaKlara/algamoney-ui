@@ -44,8 +44,9 @@ import { SharedModule } from './../shared/shared.module';
 
   ],
   exports: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
+   // LancamentoCadastroComponent,
+   // LancamentosPesquisaComponent
+   // utilizando o router não é necessário exportar os  componentes
   ]
 })
 export class LancamentosModule { }
