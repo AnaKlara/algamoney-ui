@@ -9,6 +9,8 @@ import { PessoaService } from 'src/app/pessoas/pessoa.service';
 import { CategoriaService } from 'src/app/categorias/categoria.service';
 import { Lancamento } from 'src/app/core/model';
 import { ActivatedRoute } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -25,11 +27,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
   categorias = [  ];
 
-  pessoas = [
-  {label: 'João da Silva', value: 1},
-  {label: 'Sebastião Souza', value: 2},
-  {label: 'Maria Abadia', value: 3}
-  ];
+  pessoas = [];
 
   lancamento = new Lancamento();
   constructor(
@@ -41,13 +39,32 @@ export class LancamentoCadastroComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
+  codigoUrl: any ;
+
+  editando = false;
+
   ngOnInit() {
 
-    console.log(this.route.snapshot.params['codigo'] );
+    this.codigoUrl = this.route.snapshot.params['codigo'];
+    this.urlComCodigo(this.codigoUrl);
+
+
     this.carregarPessoas();
     this.carregarCategorias();
   }
 
+  urlComCodigo(codigoUrl: any) {
+    console.log('Printando o codigo da URL: ');
+    console.log(codigoUrl);
+
+    if ( codigoUrl === 'Novo' ) {
+      console.log('Um novo lançamento');
+    } else {
+      console.log('Atualizando lançamento');
+      this.buscarLancamentoPorCodigo(codigoUrl);
+      this.editando = true;
+    }
+  }
 
   carregarPessoas() {
 
@@ -86,17 +103,47 @@ Então usamos a função map() para iterar em cada item da resposta da API
 e transformar em um objeto compatível com o primeNG
 
 */
-
   salvar(form: FormControl) {
+    if (this.editando) {
+      console.log(this.lancamento.dataPagamento);
+      this.atualizarLancamento(form);
+    } else {
+      console.log( typeof(this.lancamento.dataPagamento));
+      this.adicionarlancamento(form);
+    }
+  }
 
+
+
+  adicionarlancamento(form: FormControl) {
 
     this.lancamentoService.adicionar(this.lancamento)
     .then(  () => {
-      this.toastyService.success('Lançamento adicionado com sucesso!');
+      this.toastyService.success('Novo lançamento cadastrado com sucesso!');
       form.reset();
       this.lancamento = new Lancamento();
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
+
+  buscarLancamentoPorCodigo(codigo: number) {
+    this.lancamentoService.buscarPorCodigo(codigo)
+      .then(resultado => {
+        this.lancamento = resultado;
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+
+  atualizarLancamento(form: FormControl) {
+
+    this.lancamentoService.atualizar(this.lancamento)
+    .then(  lancamento => {
+      this.lancamento = lancamento;
+      this.toastyService.success('Lançamento atualizado com sucesso!');
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
 
 }

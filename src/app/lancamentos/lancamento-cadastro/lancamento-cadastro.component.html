@@ -4,7 +4,7 @@
     <!--f va representar uma instância do formulário -->
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>Novo Lançamento</h1>
+        <h1> {{ editando ? 'Editando ' : 'Novo ' }} Lançamento</h1>
       </div>
 
       <div class="ui-g-12">
@@ -79,7 +79,7 @@
       <div class="ui-g-12 ui-fluid" >
         <label>Observação</label>
         <textarea pInputTextarea type="text" name="observacao"
-        [(ngModel)]="lancamento.observacao"
+        [(ngModel)]="lancamento.observacao" autoResize="autoResize"
         ></textarea>
       </div>
 

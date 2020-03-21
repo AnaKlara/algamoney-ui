@@ -84,4 +84,41 @@ export class LancamentoService {
       .toPromise();
   }
 
+  atualizar(lancamento: Lancamento): Promise<Lancamento> {
+    lancamento.dataPagamento = moment(lancamento.dataPagamento).format('DD/MM/YYYY');
+    lancamento.dataVencimento = moment(lancamento.dataVencimento).format('DD/MM/YYYY');
+
+    const headers = new HttpHeaders()
+    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+    // admin@algamoney.com:admin base64 encoded
+    .append('Content-Type', 'application/json');
+
+    return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento, { headers })
+      .toPromise()
+      .then(response => {
+        const lancamentoAlterado = response as Lancamento;
+
+        lancamentoAlterado.dataPagamento = moment(lancamentoAlterado.dataPagamento).format('DD/MM/YYYY');
+        lancamentoAlterado.dataVencimento = moment(lancamentoAlterado.dataVencimento).format('DD/MM/YYYY');
+
+        console.log('Lançamento atualizado com sucesso!');
+        console.log(lancamentoAlterado);
+
+        return lancamentoAlterado;
+      });
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Lancamento> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+                                    // admin@algamoney.com:admin base64 encoded
+
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`, { headers }) // {headers: headers, params:params}
+      .toPromise()
+      .then();
+  }
+
+
+
+
+
 }

@@ -60,12 +60,12 @@
 
             <td [ngClass]="{'col-data': true}">
               <span class="ui-column-title">Vencimento</span>
-              {{lancamento.dataVencimento | date:"MM/dd/y" }}
+              {{lancamento.dataVencimento | date:"dd/MM/y" }}
             </td>
 
             <td class="col-data">
               <span class="ui-column-title">Pagamento</span>
-              {{lancamento.dataPagamento | date:"MM/dd/y" }}
+              {{lancamento.dataPagamento | date:"dd/MM/y" }}
             </td>
 
             <td class="col-valor">
