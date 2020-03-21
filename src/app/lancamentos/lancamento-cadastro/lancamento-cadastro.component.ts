@@ -9,6 +9,7 @@ import { PessoaService } from 'src/app/pessoas/pessoa.service';
 import { CategoriaService } from 'src/app/categorias/categoria.service';
 import { Lancamento } from 'src/app/core/model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -37,7 +38,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private lancamentoService: LancamentoService,
     private toastyService: ToastyService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title,
   ) { }
 
   codigoUrl: any ;
@@ -52,6 +54,13 @@ export class LancamentoCadastroComponent implements OnInit {
 
     this.carregarPessoas();
     this.carregarCategorias();
+
+    if (this.editando) {
+      this.title.setTitle('Edição de Laçamento');
+    } else {
+      this.title.setTitle('Novo Laçamento');
+    }
+
   }
 
   urlComCodigo(codigoUrl: any) {

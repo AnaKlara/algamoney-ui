@@ -5,6 +5,7 @@ import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
 import { Pessoa } from 'src/app/core/model';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class PessoaCadastroComponent implements OnInit {
       private pessoaService: PessoaService,
       private errorHandler: ErrorHandlerService,
       private toastyService: ToastyService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private title: Title
     ) { }
 
     codigoUrl: any ;
@@ -32,6 +34,12 @@ export class PessoaCadastroComponent implements OnInit {
 
       this.codigoUrl = this.route.snapshot.params['codigo'];
       this.urlComCodigo(this.codigoUrl);
+
+      if (this.editando) {
+        this.title.setTitle('Edição de Pessoa');
+      } else {
+        this.title.setTitle('Adicionar Pessoa');
+      }
 
     }
 

@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, Table, ConfirmationService } from 'primeng';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -25,11 +26,13 @@ constructor(
   private pessoaService: PessoaService,
   private toasty: ToastyService,
   private confirmation: ConfirmationService,
-  private errorHandler: ErrorHandlerService
+  private errorHandler: ErrorHandlerService,
+  private title: Title,
     ) { }
 
   ngOnInit() {
       // this.pesquisar(); o evento Lazyload já dispara a chamada da função automaticamente
+      this.title.setTitle('Pessoas');
   }
 
   pesquisar(pagina = 0) {
