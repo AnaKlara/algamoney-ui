@@ -70,9 +70,7 @@ export class LancamentoService {
 
 
   adicionar(lancamento: Lancamento): Promise<Lancamento> {
-    lancamento.dataPagamento = moment(lancamento.dataPagamento).format('DD/MM/YYYY');
-    lancamento.dataVencimento = moment(lancamento.dataVencimento).format('DD/MM/YYYY');
-
+    this.converterStringsParaDatas([lancamento]);
     console.log(lancamento);
 
     const headers = new HttpHeaders()
@@ -85,8 +83,8 @@ export class LancamentoService {
   }
 
   atualizar(lancamento: Lancamento): Promise<Lancamento> {
-    lancamento.dataPagamento = moment(lancamento.dataPagamento).format('DD/MM/YYYY');
-    lancamento.dataVencimento = moment(lancamento.dataVencimento).format('DD/MM/YYYY');
+
+    this.converterStringsParaDatas([lancamento]);
 
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
@@ -97,13 +95,9 @@ export class LancamentoService {
       .toPromise()
       .then(response => {
         const lancamentoAlterado = response as Lancamento;
-
-        lancamentoAlterado.dataPagamento = moment(lancamentoAlterado.dataPagamento).format('DD/MM/YYYY');
-        lancamentoAlterado.dataVencimento = moment(lancamentoAlterado.dataVencimento).format('DD/MM/YYYY');
-
-        console.log('Lançamento atualizado com sucesso!');
+        // this.converterStringsParaDatas([lancamentoAlterado]);
+        console.log('Lançamento atualizado com sucesso! No banco temos o seguinte:');
         console.log(lancamentoAlterado);
-
         return lancamentoAlterado;
       });
   }
@@ -114,9 +108,32 @@ export class LancamentoService {
 
     return this.http.get(`${this.lancamentosUrl}/${codigo}`, { headers }) // {headers: headers, params:params}
       .toPromise()
-      .then();
+      .then(response => {
+        const lancamento = response as Lancamento;
+        // this.converterStringsParaDatas([lancamento]);
+        return lancamento;
+      });
   }
 
+  private converterStringsParaDatas(lancamentos: Lancamento[]) {
+
+    for (const lancamento of lancamentos) {
+      if (lancamento.dataVencimento && typeof lancamento.dataVencimento !== 'string') {
+        console.log('Printando a data de vencimento antes');
+        console.log(lancamento.dataVencimento);
+        console.log(typeof lancamento.dataVencimento);
+
+        lancamento.dataVencimento = moment(lancamento.dataVencimento).format('DD/MM/YYYY').toString();
+
+        console.log('Printando a data de vencimento depois');
+        console.log(lancamento.dataVencimento);
+        console.log(typeof lancamento.dataVencimento);
+      }
+      if (lancamento.dataPagamento && typeof lancamento.dataPagamento !== 'string') {
+        lancamento.dataPagamento = moment(lancamento.dataPagamento).format('DD/MM/YYYY').toString();
+      }
+    }
+  }
 
 
 
