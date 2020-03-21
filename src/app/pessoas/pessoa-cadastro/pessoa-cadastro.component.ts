@@ -4,7 +4,7 @@ import { PessoaService } from '../pessoa.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
 import { Pessoa } from 'src/app/core/model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 
@@ -23,6 +23,7 @@ export class PessoaCadastroComponent implements OnInit {
       private errorHandler: ErrorHandlerService,
       private toastyService: ToastyService,
       private route: ActivatedRoute,
+      private router: Router,
       private title: Title
     ) { }
 
@@ -100,7 +101,15 @@ export class PessoaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
     }
 
+    nova(form: FormControl) {
+      form.reset();
 
+      setTimeout( function() {
+        this.pessoa = new Pessoa();
+      }.bind(this), 1);
+
+      this.router.navigate(['/pessoas/nova']);
+    }
 
 
   }
