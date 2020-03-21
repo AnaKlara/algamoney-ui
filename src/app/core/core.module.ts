@@ -8,12 +8,14 @@ import { Title } from '@angular/platform-browser';
 import { ToastyModule } from 'ng2-toasty';
 import { ConfirmDialogModule, ConfirmationService } from 'primeng';
 
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { AuthService } from './../seguranca/auth.service';
 
 
 
@@ -42,7 +44,7 @@ PQ não precisamos exportar o componente PaginaNaoEncontradaComponent
     ErrorHandlerService,
     ConfirmationService,
     Title,
-
+    AuthService,
     LancamentoService,
     PessoaService,
     CategoriaService

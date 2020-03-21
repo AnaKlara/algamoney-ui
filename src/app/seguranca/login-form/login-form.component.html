@@ -2,20 +2,26 @@
   <div class="ui-g">
     <div class="ui-g-4"></div>
     <div class="ui-g-4">
-      <h1>Login</h1>
-      <form autocomplete="off" (submit)="logar()">
+      <div class="login">
+        <h1 class="center" >Login</h1>
+        <h6 class="center" >{{ auth.jwtPayload | json }}</h6>
+      </div>
+      <form autocomplete="off"  #f="ngForm">
         <div class="ui-g-12 ui-fluid">
           <label>Username</label>
-          <input type="text" pInputText name="username" placeholder="example@rmail.com" >
+          <input type="email" pInputText name="usuario"
+          placeholder="example@email.com" required  #usuario>
         </div>
         <div class="ui-g-12 ui-fluid">
           <label>Senha</label>
-          <input type="text" pInputText name="senha" placeholder="sercret%&@#1234" >
+          <input type="password" pInputText name="senha" placeholder="sercret%&@#1234"
+          required #senha>
         </div>
 
 
         <div class="ui-g-12 ui-fluid">
-          <button pButton type="submit" label="Logar" class="ui-button-rounded" ></button>
+          <button pButton type="submit" label="Logar" class="ui-button-rounded"
+          [disabled]="!f.valid" (click)="login(usuario.value, senha.value)" ></button>
         </div>
       </form>
     </div>
