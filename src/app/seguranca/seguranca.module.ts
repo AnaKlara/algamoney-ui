@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { InputTextModule, ButtonModule } from 'primeng';
-import { JwtHelperService, JwtModule  } from '@auth0/angular-jwt';
+import { JwtModule  } from '@auth0/angular-jwt';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SharedModule } from '../shared/shared.module';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
+
+export function tokenGetter(): string {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [LoginFormComponent],
@@ -17,18 +22,18 @@ import { SegurancaRoutingModule } from './seguranca-routing.module';
 
     InputTextModule,
     ButtonModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => {
-          return '';
-        }
-      }
-  }),
+    HttpClientModule,
+    JwtModule.forRoot({  config: {
+        tokenGetter , // tokenGetter: tokenGetter,
+        whitelistedDomains: [ 'localhost:8080' ],
+        blacklistedRoutes: [ 'http://localhost:8080/oauth/token' ],
+
+     } } ),
     SharedModule,
     SegurancaRoutingModule
   ],
   providers: [
-    JwtHelperService
+
   ]
 })
 export class SegurancaModule { }

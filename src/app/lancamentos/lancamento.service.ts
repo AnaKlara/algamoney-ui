@@ -19,9 +19,10 @@ export class LancamentoService {
   constructor(private http: HttpClient) { }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
+    /*
     const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
                                     // admin@algamoney.com:admin base64 encoded
-    /* HttpParams é um componente imutável,
+    HttpParams é um componente imutável,
     o que significa que toda alteração feita em um objeto deste tipo,
     irá resultar em um outro objeto novo e não irá alterar a instância atual.
     Portanto, toda vez que chamarmos um método deste componente que deve alterar o seu estado,
@@ -44,8 +45,10 @@ export class LancamentoService {
         params = params.set('dataVencimentoAte', moment(filtro.dataVencimentoFim).format('YYYY-MM-DD'));
     }
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { headers , params}) // {headers: headers, params:params}
-      .toPromise()
+    // return this.http.get(`${this.lancamentosUrl}?resumo`, { headers , params})
+    // {headers: headers, params:params}
+    return this.http.get(`${this.lancamentosUrl}?resumo`, { params })
+     .toPromise()
       // tslint:disable-next-line: no-string-literal
       .then(response => {
         const lancamentos = response['content'];
@@ -60,10 +63,10 @@ export class LancamentoService {
 
   excluir(codigo: number): Promise<void> {
 
-    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    // const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
     // admin@algamoney.com:admin base64 encoded
 
-    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, { headers })
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}` ) // , { headers })
           .toPromise()
           .then(() => null);
   }
@@ -72,26 +75,26 @@ export class LancamentoService {
   adicionar(lancamento: Lancamento): Promise<Lancamento> {
     this.converterStringsParaDatas([lancamento]);
     console.log(lancamento);
-
+    /*
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
     // admin@algamoney.com:admin base64 encoded
     .append('Content-Type', 'application/json');
-
-    return this.http.post<Lancamento>(this.lancamentosUrl, lancamento, { headers })
+    */
+    return this.http.post<Lancamento>(this.lancamentosUrl, lancamento ) // , { headers })
       .toPromise();
   }
 
   atualizar(lancamento: Lancamento): Promise<Lancamento> {
 
     this.converterStringsParaDatas([lancamento]);
-
+    /*
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
     // admin@algamoney.com:admin base64 encoded
     .append('Content-Type', 'application/json');
-
-    return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento, { headers })
+    */
+    return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento ) //, { headers })
       .toPromise()
       .then(response => {
         const lancamentoAlterado = response as Lancamento;
@@ -103,10 +106,9 @@ export class LancamentoService {
   }
 
   buscarPorCodigo(codigo: number): Promise<Lancamento> {
-    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    // const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
                                     // admin@algamoney.com:admin base64 encoded
-
-    return this.http.get(`${this.lancamentosUrl}/${codigo}`, { headers }) // {headers: headers, params:params}
+    return this.http.get(`${this.lancamentosUrl}/${codigo}` ) // , { headers }) // {headers: headers, params:params}
       .toPromise()
       .then(response => {
         const lancamento = response as Lancamento;

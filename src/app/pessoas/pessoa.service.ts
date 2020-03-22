@@ -35,8 +35,9 @@ export class PessoaService {
     }
 
 
-    return this.http.get(`${this.pessoasUrl}`, { headers , params}) // {headers: headers, params:params}
-      .toPromise()
+    // return this.http.get(`${this.pessoasUrl}`, { headers , params}) // {headers: headers, params:params}
+    return this.http.get(`${this.pessoasUrl}`, { params })
+    .toPromise()
       // tslint:disable-next-line: no-string-literal
       .then(response => {
         const pessoas = response['content'];
@@ -54,7 +55,7 @@ export class PessoaService {
 
 
   listarTodas(): Promise<any> {
-    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+   //  const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
                                     // admin@algamoney.com:admin base64 encoded
     /* HttpParams é um componente imutável,
     o que significa que toda alteração feita em um objeto deste tipo,
@@ -63,7 +64,7 @@ export class PessoaService {
     precisamos fazer uma nova atribuição... LET
     */
 
-    return this.http.get(`${this.pessoasUrl}`, { headers })
+    return this.http.get(`${this.pessoasUrl}`)
       .toPromise()
       .then(response => {
         const pessoas = response['content'];
@@ -74,10 +75,10 @@ export class PessoaService {
 
   excluir(codigo: number): Promise<void> {
 
-    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    // const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
     // admin@algamoney.com:admin base64 encoded
 
-    return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers })
+    return this.http.delete(`${this.pessoasUrl}/${codigo}` ) // , { headers })
           .toPromise()
           .then(() => null);
   }
@@ -86,25 +87,25 @@ export class PessoaService {
   adicionar(pessoa: Pessoa): Promise<Pessoa> {
 
     console.log(Pessoa);
-
+    /*
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
     // admin@algamoney.com:admin base64 encoded
     .append('Content-Type', 'application/json');
-
-    return this.http.post<Pessoa>(this.pessoasUrl, pessoa, { headers })
+    */
+    return this.http.post<Pessoa>(this.pessoasUrl, pessoa ) // , { headers })
       .toPromise();
   }
 
 
   atualizar(pessoa: Pessoa): Promise<Pessoa> {
-
+    /*
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
     // admin@algamoney.com:admin base64 encoded
     .append('Content-Type', 'application/json');
-
-    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa, { headers })
+    */
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa ) // , { headers })
       .toPromise()
       .then(response => {
         const pessoaAlterada = response as Pessoa;
@@ -113,21 +114,21 @@ export class PessoaService {
   }
 
   buscarPorCodigo(codigo: number): Promise<Pessoa> {
-    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    // const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
                                     // admin@algamoney.com:admin base64 encoded
-
-    return this.http.get(`${this.pessoasUrl}/${codigo}`, { headers }) // {headers: headers, params:params}
+    return this.http.get(`${this.pessoasUrl}/${codigo}` ) // , { headers }) // {headers: headers, params:params}
       .toPromise()
       .then();
   }
 
   atualizaPropiedadeAtivo(codigo: number , setTo: boolean) {
+    /*
     const headers = new HttpHeaders()
     .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
     // admin@algamoney.com:admin base64 encoded
     .append('Content-Type', 'application/json');
-
-    return this.http.put<Pessoa>(`${this.pessoasUrl}/${codigo}/ativo`, setTo, { headers })
+    */
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${codigo}/ativo`, setTo ) // , { headers })
       .toPromise()
       .then( status => {
         return status;

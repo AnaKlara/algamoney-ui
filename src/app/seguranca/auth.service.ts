@@ -37,7 +37,7 @@ export class AuthService {
           return Promise.reject('Usuário ou senha inválida');
         }
       }
-      return Promise.reject(response);//quando dá ruim mas não sabemos oq é
+      return Promise.reject(response); // quando dá ruim mas não sabemos oq é
     });
   }
 
