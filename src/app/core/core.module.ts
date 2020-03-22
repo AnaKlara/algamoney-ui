@@ -16,6 +16,7 @@ import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { AuthService } from './../seguranca/auth.service';
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
 
 
 
@@ -27,7 +28,7 @@ PQ não precisamos exportar o componente PaginaNaoEncontradaComponent
 */
 
 @NgModule({
-  declarations: [ NavbarComponent, PaginaNaoEncontradaComponent ],
+  declarations: [ NavbarComponent, PaginaNaoEncontradaComponent, NaoAutorizadoComponent ],
   imports: [
     CommonModule,
     RouterModule,
