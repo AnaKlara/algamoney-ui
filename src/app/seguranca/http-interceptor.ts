@@ -1,8 +1,13 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
 import { Observable, from } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-import { Injectable } from '@angular/core';
+
+export class NotAuthenticatedError {
+
+}
 
 @Injectable()
 export class MoneyHttpInterceptor implements HttpInterceptor {
@@ -14,14 +19,12 @@ export class MoneyHttpInterceptor implements HttpInterceptor {
         if (!req.url.includes('/oauth/token') && this.auth.isAccessTokenInvalido()) {
 
         return from(this.auth.obterNovoAccessToken())
-            .pipe(
-                mergeMap(() => {
-                    req = req.clone({
-                        setHeaders: {
-                            Authorization: `Bearer ${localStorage.getItem('token')}`
-                        }
-                    });
-                    return next.handle(req);
+        .pipe(
+            mergeMap(() => {
+                if ( this.auth.isAccessTokenInvalido() ) {
+                    throw new NotAuthenticatedError(); // se o acess token estiver expirado ele lança um erro
+                }
+                return next.handle(req);
                 })
             );
         }
