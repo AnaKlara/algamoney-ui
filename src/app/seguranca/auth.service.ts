@@ -16,6 +16,7 @@ export class AuthService {
 
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
   jwtPayload: any;
+  tookensRevokeURL = 'http://localhost:8080/tokens/revoke';
 
   login(usuario: string, senha: string): Promise<void> {
     const headers = new HttpHeaders()
@@ -91,6 +92,19 @@ export class AuthService {
       }
     }
     return false;
+  }
+
+  logout() {
+    return this.http.delete(this.tookensRevokeURL, { withCredentials: true } )
+      .toPromise()
+      .then(() => {
+        this.limparAccesstoken();
+      });
+  }
+
+  limparAccesstoken() {
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
   }
 
 }

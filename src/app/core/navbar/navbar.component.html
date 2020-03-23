@@ -11,7 +11,7 @@
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li> <!-- Se não existir um token ele não entra em conflito por tentar acessar algo inexistente-->
     <li *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')" class="navbar-menuitem" routerLinkActive="ativo" ><a routerLink="/lancamentos">Lançamentos</a></li>
     <li *ngIf="auth.temPermissao('ROLE_PESQUISAR_PESSOA')" class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="/pessoas">Pessoas</a></li>
-    <li class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="#">Logout</a></li>
+    <li (click)="logout()" class="navbar-menuitem" routerLinkActive="ativo"><a routerLink="#">Logout</a></li>
   </ul>
 
 </nav>

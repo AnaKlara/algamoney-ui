@@ -29,6 +29,4 @@ export class LoginFormComponent implements OnInit {
       this.errorHandler.handle(erro);
     });
   }
-
-
 }
