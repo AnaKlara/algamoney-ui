@@ -4,12 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-
 import { CoreModule } from './core/core.module';
-import { PessoasModule } from './pessoas/pessoas.module';
-import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
-
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -22,8 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
 
     CoreModule,
-    LancamentosModule,
-    PessoasModule,
+    // LancamentosModule, foi retirado na implementação do lazy load
+    // PessoasModule, foi retirado na implementação do lazy load
     SegurancaModule,
     AppRoutingModule
 
