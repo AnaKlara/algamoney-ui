@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {  NgForm } from '@angular/forms';
 import { PessoaService } from '../pessoa.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { ToastyService } from 'ng2-toasty';
@@ -58,7 +58,7 @@ export class PessoaCadastroComponent implements OnInit {
       }
     }
 
-    adicionarPessoa(form: FormControl) {
+    adicionarPessoa(form: NgForm) {
 
       this.pessoaService.adicionar(this.pessoa)
       .then(  () => {
@@ -72,7 +72,7 @@ export class PessoaCadastroComponent implements OnInit {
 
 
 
-    salvar(form: FormControl) {
+    salvar(form: NgForm) {
       if (this.editando) {
         this.atualizarPessoa(form);
       } else {
@@ -90,7 +90,7 @@ export class PessoaCadastroComponent implements OnInit {
     }
 
 
-    atualizarPessoa(form: FormControl ) {
+    atualizarPessoa(form: NgForm ) {
 
       this.pessoaService.atualizar(this.pessoa)
       .then(  pessoa => {
@@ -101,7 +101,7 @@ export class PessoaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
     }
 
-    nova(form: FormControl) {
+    nova(form: NgForm) {
       form.reset();
 
       setTimeout( function() {

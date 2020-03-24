@@ -1,6 +1,6 @@
 import { ToastyService } from 'ng2-toasty';
 import { LancamentoService } from './../lancamento.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -113,7 +113,7 @@ Então usamos a função map() para iterar em cada item da resposta da API
 e transformar em um objeto compatível com o primeNG
 
 */
-  salvar(form: FormControl) {
+  salvar(form: NgForm ) {
     if (this.editando) {
       this.atualizarLancamento(form);
     } else {
@@ -121,7 +121,7 @@ e transformar em um objeto compatível com o primeNG
     }
   }
 
-  adicionarlancamento(form: FormControl) {
+  adicionarlancamento(form: NgForm) {
 
     this.lancamentoService.adicionar(this.lancamento)
     .then(  lancamentoAdicionado => {
@@ -142,7 +142,7 @@ e transformar em um objeto compatível com o primeNG
   }
 
 
-  atualizarLancamento(form: FormControl) {
+  atualizarLancamento(form: NgForm) {
 
     this.lancamentoService.atualizar(this.lancamento)
     .then(  lancamentoAtualizado => {
@@ -156,7 +156,7 @@ e transformar em um objeto compatível com o primeNG
     .catch(erro => this.errorHandler.handle(erro));
   }
 
-  novo(form: FormControl) {
+  novo(form: NgForm) {
     form.reset();
 
     setTimeout( function() {

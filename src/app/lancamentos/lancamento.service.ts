@@ -20,7 +20,7 @@ export class LancamentoService {
   constructor(
     private http: HttpClient,
     ) {
-      this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
+      this.lancamentosUrl = `${environment.apiUrl}/lancamento`;
      }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {

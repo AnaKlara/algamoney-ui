@@ -12,7 +12,7 @@ export class CategoriaService {
   categoriasUrl: string;
 
   constructor(private http: HttpClient) {
-    this.categoriasUrl = `${environment.apiUrl}/categoria`;
+    this.categoriasUrl = `${environment.apiUrl}/categorias`;
   }
 
 
