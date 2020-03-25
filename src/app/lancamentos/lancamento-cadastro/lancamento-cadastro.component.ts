@@ -1,6 +1,7 @@
+import { ConfirmDialogModule } from 'primeng';
 import { ToastyService } from 'ng2-toasty';
 import { LancamentoService } from './../lancamento.service';
-import { FormControl, NgForm } from '@angular/forms';
+import { FormControl, NgForm, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -30,7 +31,10 @@ export class LancamentoCadastroComponent implements OnInit {
 
   pessoas = [];
 
-  lancamento = new Lancamento();
+  // lancamento = new Lancamento();
+
+  formulario: FormGroup;
+
   constructor(
     private categoriaService: CategoriaService,
     private pessoaService: PessoaService,
@@ -40,6 +44,7 @@ export class LancamentoCadastroComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private title: Title,
+    private formBuilder: FormBuilder
   ) { }
 
   codigoUrl: any ;
@@ -47,6 +52,7 @@ export class LancamentoCadastroComponent implements OnInit {
   editando = false;
 
   ngOnInit() {
+    this.configurarFormulario();
 
     this.codigoUrl = this.route.snapshot.params['codigo'];
     this.urlComCodigo(this.codigoUrl);
@@ -63,6 +69,37 @@ export class LancamentoCadastroComponent implements OnInit {
 
   }
 
+  configurarFormulario() {
+    this.formulario = this.formBuilder.group({
+      codigo: [],
+      tipo: [ 'RECEITA', Validators.required ],
+      dataVencimento: [ null, Validators.required ],
+      dataPagamento: [],
+      descricao: [null, [ this.validarObrigatoriedade, this.validarTamanhoMinimo(5) ]],
+      valor: [ null, Validators.required ],
+      pessoa: this.formBuilder.group({
+        codigo: [ null, Validators.required ],
+        nome: []
+      }),
+      categoria: this.formBuilder.group({
+        codigo: [ null, Validators.required ],
+        nome: []
+      }),
+      observacao: []
+    });
+  }
+
+  validarObrigatoriedade(input: FormControl) {
+    return (input.value ? null : { obrigatoriedade: true });
+  }
+
+  validarTamanhoMinimo(valor: number) {
+    return (input: FormControl) => {
+      return (!input.value || input.value.length >= valor) ? null : { tamanhoMinimo: { tamanho: valor } };
+    };
+  }
+
+
   urlComCodigo(codigoUrl: any) {
     console.log('Printando o codigo da URL: ');
     console.log(codigoUrl);
@@ -76,8 +113,8 @@ export class LancamentoCadastroComponent implements OnInit {
     }
   }
 
-  carregarPessoas() {
 
+  carregarPessoas() {
     this.pessoaService.listarTodas()
       .then(resultado => {
         this.pessoas = resultado.map( c => ({ label: c.nome, value: c.codigo }) );
@@ -93,37 +130,19 @@ export class LancamentoCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
-/*
-O modelo dos dados do drop dawn do prime ng é assim:
-[
-  {label: 'Audi', value: 'Audi'},
-  {label: 'BMW', value: 'BMW'},
-  {label: 'Mercedes', value: 'Mercedes'}
-]
- e quando recebemos os dados da API receebemos assim:
 
- [
-    {"codigo": 1,"nome": "lazer" },
-    {"codigo": 2,"nome": "Alimentação"},
-    {"codigo": 3,"nome": "Supermercado"},
-    {"codigo": 4,"nome": "Farmácia"},
-    {"codigo": 5,"nome": "Outros" }
-]
-Então usamos a função map() para iterar em cada item da resposta da API
-e transformar em um objeto compatível com o primeNG
 
-*/
-  salvar(form: NgForm ) {
+  salvar() {
     if (this.editando) {
-      this.atualizarLancamento(form);
+      this.atualizarLancamento();
     } else {
-      this.adicionarlancamento(form);
+      this.adicionarlancamento();
     }
   }
 
-  adicionarlancamento(form: NgForm) {
 
-    this.lancamentoService.adicionar(this.lancamento)
+  adicionarlancamento() {
+    this.lancamentoService.adicionar(this.formulario.value)
     .then(  lancamentoAdicionado => {
       this.toastyService.success('Novo lançamento cadastrado com sucesso!');
       // form.reset();
@@ -136,29 +155,28 @@ e transformar em um objeto compatível com o primeNG
   buscarLancamentoPorCodigo(codigo: number) {
     this.lancamentoService.buscarPorCodigo(codigo)
       .then(resultado => {
-        this.lancamento = resultado;
+        // this.lancamento = resultado;
+        this.formulario.patchValue(resultado);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
 
 
-  atualizarLancamento(form: NgForm) {
-
-    this.lancamentoService.atualizar(this.lancamento)
+  atualizarLancamento() {
+    this.lancamentoService.atualizar(this.formulario.value)
     .then(  lancamentoAtualizado => {
       // this.lancamento = lancamentoAtualizado ;
+      this.formulario.patchValue(lancamentoAtualizado);
+      this.router.navigate(['/lancamentos', lancamentoAtualizado.codigo]);
+      this.toastyService.success('Lançamento atualizado com sucesso!');
 
-      setTimeout( function() {
-        this.router.navigate(['/lancamentos', lancamentoAtualizado.codigo]);
-        this.toastyService.success('Lançamento atualizado com sucesso!');
-      }.bind(this),1);
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
 
-  novo(form: NgForm) {
-    form.reset();
 
+  novo() {
+    this.formulario.reset();
     setTimeout( function() {
       this.lancamento = new Lancamento();
     }.bind(this),1);
