@@ -17,7 +17,7 @@ import { CategoriaService } from './../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { AuthService } from './../seguranca/auth.service';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
-
+import { DashboardService } from './../dashboard/dashboard.service';
 
 
 registerLocaleData(localePt);
@@ -48,7 +48,8 @@ PQ não precisamos exportar o componente PaginaNaoEncontradaComponent
     AuthService,
     LancamentoService,
     PessoaService,
-    CategoriaService
+    CategoriaService,
+    DashboardService
   ]
 })
 

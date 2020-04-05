@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 
 import { PanelModule } from 'primeng/panel';
 import { ChartModule } from 'primeng/chart';
@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
     PanelModule,
     ChartModule
-  ]
+  ],
+  providers: [ DecimalPipe ]
 })
 export class DashboardModule { }
