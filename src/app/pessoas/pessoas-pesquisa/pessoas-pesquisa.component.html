@@ -22,7 +22,7 @@
   <div class="ui-g">
     <div class="ui-g-12">
       <p-table [value]="pessoas" [paginator]="true"
-      emptyMessage="Nenhum lançamento encontrado"
+      emptyMessage="Nenhuma pessoa encontrada"
       [rows]="filtro.itensPorPagina" [responsive]="true"
       [lazy]="true" [totalRecords]="totalRegistros"
       (onLazyLoad)="aoMudarPagina($event)" #tabela

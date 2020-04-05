@@ -15,7 +15,11 @@ const routes: Routes = [
     path: 'pessoas',
     loadChildren: () => import('./pessoas/pessoas.module').then(m => m.PessoasModule)
   },
-  { path: '', redirectTo: 'lancamentos', pathMatch: 'full' },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }
