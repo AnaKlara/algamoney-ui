@@ -49,7 +49,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
       contato.nome, contato.email, contato.telefone);
   }
 
-  get editando() {
+  get editandoCadastro() {
     return this.contato && this.contato.codigo;
   }
 

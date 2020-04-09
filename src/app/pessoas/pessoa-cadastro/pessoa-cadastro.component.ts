@@ -36,6 +36,7 @@ export class PessoaCadastroComponent implements OnInit {
     ngOnInit() {
 
       this.codigoUrl = this.route.snapshot.params['codigo'];
+
       this.urlComCodigo(this.codigoUrl);
 
       if (this.editando) {
@@ -109,5 +110,8 @@ export class PessoaCadastroComponent implements OnInit {
       this.router.navigate(['/pessoas/nova']);
     }
 
+    get editandoCadastro() {
+      return Boolean(this.pessoa.codigo);
+    }
 
   }
