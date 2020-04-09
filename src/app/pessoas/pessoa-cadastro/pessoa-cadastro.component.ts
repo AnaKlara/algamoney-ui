@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {  NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ToastyService } from 'ng2-toasty';
+
 import { PessoaService } from '../pessoa.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
-import { ToastyService } from 'ng2-toasty';
 import { Pessoa } from 'src/app/core/model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -48,7 +50,6 @@ export class PessoaCadastroComponent implements OnInit {
     urlComCodigo(codigoUrl: any) {
       console.log('Printando o codigo da URL: ');
       console.log(codigoUrl);
-
       if ( typeof codigoUrl === 'undefined' ) {
         console.log('Adicionando uma nova pessoa...');
       } else {
@@ -59,7 +60,6 @@ export class PessoaCadastroComponent implements OnInit {
     }
 
     adicionarPessoa(form: NgForm) {
-
       this.pessoaService.adicionar(this.pessoa)
       .then(  () => {
         const nome = this.pessoa.nome.split(' ').slice(0, 1).join(' ');
@@ -91,7 +91,6 @@ export class PessoaCadastroComponent implements OnInit {
 
 
     atualizarPessoa(form: NgForm ) {
-
       this.pessoaService.atualizar(this.pessoa)
       .then(  pessoa => {
         this.pessoa = pessoa;
@@ -103,7 +102,6 @@ export class PessoaCadastroComponent implements OnInit {
 
     nova(form: NgForm) {
       form.reset();
-
       setTimeout( function() {
         this.pessoa = new Pessoa();
       }.bind(this), 1);
