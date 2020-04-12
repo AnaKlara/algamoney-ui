@@ -126,6 +126,7 @@ export class LancamentoCadastroComponent implements OnInit {
   carregarCategorias() {
     this.categoriaService.listarCategorias()
       .then(resultado => {
+        console.log(resultado);
         this.categorias = resultado.map( c => ({ label: c.nome, value: c.codigo }) );
       })
       .catch(erro => this.errorHandler.handle(erro));
