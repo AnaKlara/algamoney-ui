@@ -89,6 +89,7 @@
         chooseLabel="Anexar" accept="image/*,application/*"
         [url]="urlUploadAnexo"
         (onUpload)="aoTerminarUploadAnexo($event)"
+        (onError)="erroUpload($event)"
         ></p-fileUpload>
 
       </div>
@@ -99,7 +100,6 @@
         <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
         [href]="formulario.get('urlAnexo').value">{{ nomeAnexo }}</a>
       </div>
-      <!-- TODO:bug -- o link fica na cor branco oou some, não dá pra ver -->
 
       <hr/>
       <div class="ui-g-12 " >
