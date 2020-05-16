@@ -15,12 +15,12 @@ export class LancamentoFiltro {
 @Injectable()
 export class LancamentoService {
 
-  lancamentosUrl: string; // 'http://localhost:8080/lancamento';
+  lancamentosUrl: string; // 'http://localhost:8080/lancamentos';
 
   constructor(
     private http: HttpClient,
     ) {
-      this.lancamentosUrl = `${environment.apiUrl}/lancamento`;
+      this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
      }
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
