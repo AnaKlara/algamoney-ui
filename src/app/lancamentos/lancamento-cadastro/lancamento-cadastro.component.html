@@ -81,6 +81,27 @@
         ></textarea>
       </div>
 
+      <div *ngIf="!formulario.get('anexo').value" 
+           class="ui-g-offset-10 ui-g-2 ui-sm-offset-0 ui-sm-12 ui-fluid">
+        <label>Anexo</label>
+
+        <p-fileUpload name="anexo" mode="basic" [auto]="true" maxFileSize="1000000000"
+        chooseLabel="Anexar" accept="image/*,application/*"
+        [url]="urlUploadAnexo"
+        (onUpload)="aoTerminarUploadAnexo($event)"
+        ></p-fileUpload>
+
+      </div>
+
+      <div *ngIf="formulario.get('anexo').value"
+      class="ui-g-12 ui-fluid" dir="rtl" >
+
+        <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
+        [href]="formulario.get('urlAnexo').value">{{ nomeAnexo }}</a>
+      </div>
+      <!-- TODO:bug -- o link fica na cor branco oou some, não dá pra ver -->
+
+      <hr/>
       <div class="ui-g-12 " >
         <button class="but-cad" pButton type="submit" label="Salvar"></button>
         <button (click)="novo()"  class="but-cad" pButton type="button" label="Novo" class="ui-button-info"></button>

@@ -1,4 +1,4 @@
-import { ConfirmDialogModule } from 'primeng';
+import { ConfirmDialogModule, TriStateCheckbox } from 'primeng';
 import { ToastyService } from 'ng2-toasty';
 import { LancamentoService } from './../lancamento.service';
 import { FormControl, NgForm, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -69,6 +69,31 @@ export class LancamentoCadastroComponent implements OnInit {
 
   }
 
+  aoTerminarUploadAnexo(event){
+    const anexo = event.originalEvent.body;
+    console.log('Print que o arquivo terminou de ser upado. O objeto resposta é:');
+    console.log(anexo);
+
+    this.formulario.patchValue({
+        anexo: anexo.nome,
+        urlAnexo: anexo.url
+    });
+  }
+
+  get nomeAnexo() {
+    const nome = this.formulario.get('anexo').value;
+
+    if (nome) {
+      return nome.substring(nome.indexOf('_') + 1, nome.length);
+    }
+    return '';
+  }
+
+  //o get permite que usemos o nome da função no html como uma propriedade
+  get urlUploadAnexo() {
+    return this.lancamentoService.urlUploadAnexo();
+  }
+
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
@@ -85,7 +110,9 @@ export class LancamentoCadastroComponent implements OnInit {
         codigo: [ null, Validators.required ],
         nome: []
       }),
-      observacao: []
+      observacao: [],
+      anexo: [],
+      urlAnexo: []
     });
   }
 

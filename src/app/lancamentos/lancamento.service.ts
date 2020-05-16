@@ -23,6 +23,11 @@ export class LancamentoService {
       this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
      }
 
+  urlUploadAnexo(): string {
+    //console.log(`${this.lancamentosUrl}/anexo`);
+    return `${this.lancamentosUrl}/anexo`;
+  }
+
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
     /*
     const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
