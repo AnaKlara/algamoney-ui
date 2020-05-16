@@ -81,8 +81,7 @@
         ></textarea>
       </div>
 
-      <div *ngIf="!formulario.get('anexo').value" 
-           class="ui-g-offset-10 ui-g-2 ui-sm-offset-0 ui-sm-12 ui-fluid">
+      <div *ngIf="!formulario.get('anexo').value" class="ui-g-offset-10 ui-g-2 ui-sm-offset-0 ui-sm-12 ui-fluid">
         <label>Anexo</label>
 
         <p-fileUpload name="anexo" mode="basic" [auto]="true" maxFileSize="1000000000"
@@ -92,15 +91,17 @@
         (onUpload)="aoTerminarUploadAnexo($event)"
         (onError)="erroUpload($event)"
         
-        [hidden]="!uploadEmAndamento" 
+        [hidden]="uploadEmAndamento" 
         ></p-fileUpload>
 
         <p-progressSpinner [hidden]="!uploadEmAndamento" 
         [style]="{ width:'25px', height:'25px' }" ></p-progressSpinner>
       </div>
 
-      <div *ngIf="formulario.get('anexo').value"
-      class="ui-g-12 ui-fluid" dir="rtl" >
+      <div *ngIf="formulario.get('anexo').value" class="ui-g-12" dir="rtl" >
+      
+      <button pButton type="button" class="ui-button-danger" icon="pi pi-times" pTooltip="Excluir anexo" tooltipPosition="top" 
+      (click)="removerAnexo()" ></button>
 
         <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
         [href]="formulario.get('urlAnexo').value">{{ nomeAnexo }}</a>
@@ -108,7 +109,7 @@
 
       <hr/>
       <div class="ui-g-12 " >
-        <button class="but-cad" pButton type="submit" label="Salvar" [disaled]="formulario.invalid || uploadEmAndamento" ></button>
+        <button class="but-cad" pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento" ></button>
         <button (click)="novo()"  class="but-cad" pButton type="button" label="Novo" class="ui-button-info"></button>
         <a class="but-cad" routerLink="/lancamentos"> Voltar para a pesquisa </a>
       </div>
