@@ -13,7 +13,7 @@ export class DashboardService {
   lancamentosUrl: string;
 
   constructor(private http: HttpClient  ) {
-    this.lancamentosUrl = `${environment.apiUrl}/lancamento`;
+    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
   }
 
   lancamentosPorCategoria(): Promise<Array<any>> {

@@ -1,30 +1,31 @@
-<div class="container">
-  <div class="ui-g">
-    <div class="ui-g-4"></div>
-    <div class="ui-g-4">
-      <div class="login">
-        <h1 class="center" >Login</h1>
-        <!-- <h6 class="center" >{{ auth.jwtPayload | json }}</h6> -->
+<div class="screen" >
+  <div class="container">
+    <div class="ui-g">
+      <div class="ui-g-4  ui-sm-12"></div>
+      <div class="ui-g-4  ui-sm-12 login-box ">
+        <div class="login">
+          <h1 class="center" >Login</h1>
+          <!-- <h6 class="center" >{{ auth.jwtPayload | json }}</h6> -->
+        </div>
+        <form autocomplete="off"  #f="ngForm">
+          <div class="ui-g-12 ui-fluid">
+            <label>Username</label>
+            <input type="email" pInputText name="usuario"
+            placeholder="example@email.com" required  #usuario>
+          </div>
+          <div class="ui-g-12 ui-fluid">
+            <label>Senha</label>
+            <input type="password" pInputText name="senha" placeholder="sercret%&@#1234"
+            required #senha>
+          </div>
+
+
+          <div class="ui-g-12 ui-fluid">
+            <button pButton type="submit" label="Logar" class="ui-button-rounded"
+            [disabled]="!f.valid" (click)="login(usuario.value, senha.value); senha.value='' " ></button>
+          </div>
+        </form>
       </div>
-      <form autocomplete="off"  #f="ngForm">
-        <div class="ui-g-12 ui-fluid">
-          <label>Username</label>
-          <input type="email" pInputText name="usuario"
-          placeholder="example@email.com" required  #usuario>
-        </div>
-        <div class="ui-g-12 ui-fluid">
-          <label>Senha</label>
-          <input type="password" pInputText name="senha" placeholder="sercret%&@#1234"
-          required #senha>
-        </div>
-
-
-        <div class="ui-g-12 ui-fluid">
-          <button pButton type="submit" label="Logar" class="ui-button-rounded"
-          [disabled]="!f.valid" (click)="login(usuario.value, senha.value); senha.value='' " ></button>
-        </div>
-      </form>
-    </div>
-    <div class="ui-g-4"></div>
-</div>
+      <div class="ui-g-4  ui-sm-12"></div>
+  </div>
 </div>

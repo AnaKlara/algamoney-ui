@@ -1,4 +1,18 @@
+.screen {
+  width: 100vw;
+  height:100vh;
+  background-image: url("/assets/skyscraper.jpg");
+  background-position: center;
+  background-color: #cccccc;
+ }
+
+ .login-box{
+  border-radius: 1em;
+  margin-top: 10vh;
+  background-color: rgba(204, 247, 255, 0.4);
+ }
+
 .login{
-  width: 100%;
-margin: auto;
+  text-align: center;
+  margin: auto;
 }
