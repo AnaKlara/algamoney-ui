@@ -88,10 +88,15 @@
         <p-fileUpload name="anexo" mode="basic" [auto]="true" maxFileSize="1000000000"
         chooseLabel="Anexar" accept="image/*,application/*"
         [url]="urlUploadAnexo"
+        (onBeforeUpload)="aoIniciarUploadAnexo($event)"
         (onUpload)="aoTerminarUploadAnexo($event)"
         (onError)="erroUpload($event)"
+        
+        [hidden]="!uploadEmAndamento" 
         ></p-fileUpload>
 
+        <p-progressSpinner [hidden]="!uploadEmAndamento" 
+        [style]="{ width:'25px', height:'25px' }" ></p-progressSpinner>
       </div>
 
       <div *ngIf="formulario.get('anexo').value"

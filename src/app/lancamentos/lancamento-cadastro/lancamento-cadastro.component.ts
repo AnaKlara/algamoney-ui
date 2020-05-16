@@ -11,6 +11,7 @@ import { CategoriaService } from 'src/app/categorias/categoria.service';
 import { Lancamento } from 'src/app/core/model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -34,6 +35,8 @@ export class LancamentoCadastroComponent implements OnInit {
   // lancamento = new Lancamento();
 
   formulario: FormGroup;
+
+  uploadEmAndamento = false;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -69,6 +72,10 @@ export class LancamentoCadastroComponent implements OnInit {
 
   }
 
+  aoIniciarUploadAnexo(event) {
+    this.uploadEmAndamento = true;
+  }
+
   aoTerminarUploadAnexo(event){
     const anexo = event.originalEvent.body;
     console.log('Print que o arquivo terminou de ser upado. O objeto resposta é:');
@@ -78,10 +85,12 @@ export class LancamentoCadastroComponent implements OnInit {
         anexo: anexo.nome,
         urlAnexo: anexo.url
     });
+    this.uploadEmAndamento = false;
   }
 
   erroUpload(event){
     this.toastyService.error('Erro ao tentar enviar anexo');
+    this.uploadEmAndamento = false;
   }
 
   get nomeAnexo() {
