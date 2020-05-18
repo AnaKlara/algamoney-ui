@@ -12,6 +12,7 @@ export class Pessoa {
   nome: string;
   endereco = new Endereco();
   ativo = true;
+  contatos = new Array<Contato>();
 }
 
 export class Categoria {

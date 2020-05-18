@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
-import { Contato } from '../../core/model';
+import { Contato, Pessoa } from '../../core/model';
 
 @Component({
   selector: 'app-pessoa-cadastro-contato',
@@ -23,7 +23,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
   prepararNovoContato() {
     this.exbindoFormularioContato = true;
     this.contato = new Contato();
-    this.contatoIndex = this.contatos.length;
+    this.contatoIndex = this.contatos.length; 
   }
 
   prepararEdicaoContato(contato: Contato, index: number) {
@@ -47,7 +47,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
       contato.nome, contato.email, contato.telefone);
   }
 
-  get editandoCadastro() {
+  get editando() {
     return this.contato && this.contato.codigo;
   }
 

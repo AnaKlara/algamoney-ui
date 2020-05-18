@@ -30,7 +30,6 @@ export class PessoaCadastroComponent implements OnInit {
     ) { }
 
     codigoUrl: any ;
-    editando = false;
     
     estados : any[];
     cidades: any[];
@@ -38,14 +37,12 @@ export class PessoaCadastroComponent implements OnInit {
 
     ngOnInit() {
 
-      this.codigoUrl = this.route.snapshot.params['codigo'];
+      const codigoPessoa  = this.route.snapshot.params['codigo'];
 
-      this.urlComCodigo(this.codigoUrl);
+      this.title.setTitle('Nova pessoa');
 
-      if (this.editando) {
-        this.title.setTitle('Edição de Pessoa');
-      } else {
-        this.title.setTitle('Adicionar Pessoa');
+      if (codigoPessoa) {
+        this.buscarPessoaPorCodigo(codigoPessoa);
       }
       this.carregarEstados();
 
@@ -60,7 +57,6 @@ export class PessoaCadastroComponent implements OnInit {
       } else {
         console.log('Atualizando pessoa');
         this.buscarPessoaPorCodigo(codigoUrl);
-        this.editando = true;
       }
     }
 
@@ -95,6 +91,7 @@ export class PessoaCadastroComponent implements OnInit {
           if (this.estadoSelecionado){
             this.carregarCidades();
           }
+          this.title.setTitle('Adicionar pessoa');
         })
         .catch(erro => this.errorHandler.handle(erro));
     }
@@ -119,7 +116,7 @@ export class PessoaCadastroComponent implements OnInit {
       this.router.navigate(['/pessoas/nova']);
     }
 
-    get editandoCadastro() {
+    get editando() {
       return Boolean(this.pessoa.codigo);
     }
 
