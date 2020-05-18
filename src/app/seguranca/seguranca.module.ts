@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { MoneyHttpInterceptor } from './http-interceptor';
 import { AuthGuard } from './auth.guard';
+import { environment } from '../../environments/environment';
 
 export function tokenGetter(): string {
   return localStorage.getItem('token');
@@ -27,8 +28,8 @@ export function tokenGetter(): string {
     HttpClientModule,
     JwtModule.forRoot({  config: {
         tokenGetter , // tokenGetter: tokenGetter,
-        whitelistedDomains: [ 'localhost:8080' ],
-        blacklistedRoutes: [ 'http://localhost:8080/oauth/token' ],
+        whitelistedDomains: environment.whitelistedDomains,//lista de dominios que o token será enviado (não pode ser enviado para qualquer lugar)
+        blacklistedRoutes: environment.blacklistedRoutes
 
      } } ),
     SharedModule,

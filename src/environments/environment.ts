@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
+  whitelistedDomains: [/localhost:8080/ ],//lista de dominios que o token será enviado (não pode ser enviado para qualquer lugar)
+  blacklistedRoutes: [ /\/oauth\/token/]
 };
 
 /*
