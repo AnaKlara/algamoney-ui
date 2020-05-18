@@ -49,21 +49,17 @@
         <app-message [control]="cep" error="required" text="Informe um CEP válido."></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid" >
-        <label>Cidade</label>
-        <input [(ngModel)]="pessoa.endereco.cidade" pInputText type="text" name="cidade" ngModel #cidade="ngModel" required minlength="5">
-        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
-        <app-message [control]="cidade" error="required" text="Informe uma cidade."></app-message>
-        <app-message [control]="cidade" error="minlength" text="Mínimo de {{cidade.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{cidade.errors?.minlength?.actualLength}}"></app-message>
+      <div class="ui-g-6 ui-md-6 ui-fluid" >
+        <label>Estado</label>
+        <p-dropdown placeholder="Selecione..."  [filter]="true" [options]="estados" > </p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid" >
-        <label>Estado</label>
-        <input [(ngModel)]="pessoa.endereco.estado" pInputText type="text" name="estado" ngModel #estado="ngModel" required minlength="5">
-        <!--As divs abaixo só irão aparecer se a condição para tal for satisfeita-->
-        <app-message [control]="estado" error="required" text="Informe um estado."></app-message>
-        <app-message [control]="estado" error="minlength" text="Mínimo de {{estado.errors?.minlength?.requiredLength}} caracteres. Você escreveu apenas {{estado.errors?.minlength?.actualLength}}"></app-message>
+      <div class="ui-g-6 ui-md-6 ui-fluid" >
+        <label>Cidade</label>
+        <p-dropdown placeholder="Selecione..." [filter]="true" [options]="cidades" > </p-dropdown>
       </div>
+
+      
 
 
 

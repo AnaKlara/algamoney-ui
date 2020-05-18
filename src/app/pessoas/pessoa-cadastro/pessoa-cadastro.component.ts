@@ -20,6 +20,8 @@ export class PessoaCadastroComponent implements OnInit {
 
     pessoa = new Pessoa();
 
+    estados : any[];
+
     constructor(
       private pessoaService: PessoaService,
       private errorHandler: ErrorHandlerService,
@@ -44,6 +46,7 @@ export class PessoaCadastroComponent implements OnInit {
       } else {
         this.title.setTitle('Adicionar Pessoa');
       }
+      this.carregarEstados();
 
     }
 
@@ -112,6 +115,13 @@ export class PessoaCadastroComponent implements OnInit {
 
     get editandoCadastro() {
       return Boolean(this.pessoa.codigo);
+    }
+
+    carregarEstados() {
+      this.pessoaService.listarEstados().then(lista => {
+        this.estados = lista.map(uf => ({ label: uf.nome, value:uf.codigo}) );
+      })
+      .catch(erro => this.errorHandler.handle(erro));
     }
 
   }
