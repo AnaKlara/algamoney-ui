@@ -1,4 +1,4 @@
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { NotAuthenticatedError } from './../seguranca/http-interceptor';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';

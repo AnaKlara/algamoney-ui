@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -59,6 +59,8 @@ export class AuthService {
       this.armazenarToken(token);
     }
   }
+
+  
   obterNovoAccessToken(): Promise<void> {
     const body = 'grant_type=refresh_token';
 

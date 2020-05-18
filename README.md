@@ -1,6 +1,12 @@
 # Algamoney-UI
 
+Este projeto foi criado om o objetivo de servir como cliente da [API algamoney](https://github.com/AnaKlara/algamoney-api).
+
+## Ferramentas Utilizadas
+
 Este projeto foi criado com o [Angular CLI](https://github.com/angular/angular-cli) versão 8.3.21.
+
+## Requisitos da Máquina
 
 ## Como instalar
 
