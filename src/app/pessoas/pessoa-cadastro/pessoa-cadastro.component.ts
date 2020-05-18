@@ -20,8 +20,6 @@ export class PessoaCadastroComponent implements OnInit {
 
     pessoa = new Pessoa();
 
-    estados : any[];
-
     constructor(
       private pessoaService: PessoaService,
       private errorHandler: ErrorHandlerService,
@@ -32,8 +30,11 @@ export class PessoaCadastroComponent implements OnInit {
     ) { }
 
     codigoUrl: any ;
-
     editando = false;
+    
+    estados : any[];
+    cidades: any[];
+    estadoSelecionado: number;
 
     ngOnInit() {
 
@@ -124,4 +125,10 @@ export class PessoaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
     }
 
+    carregarCidades() {
+      this.pessoaService.pesquisarCidades(this.estadoSelecionado).then(lista => {
+        this.cidades = lista.map(cidade => ({ label: cidade.nome, value:cidade.codigo}) );
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+    }
   }
