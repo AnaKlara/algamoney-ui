@@ -5,6 +5,7 @@ export class Endereco {
   bairro: string;
   cep: string;
   cidade = new Cidade();
+  estado = new Estado();
 }
 
 export class Pessoa {

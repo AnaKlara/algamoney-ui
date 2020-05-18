@@ -41,6 +41,7 @@ constructor(
 
   this.pessoaService.pesquisar(this.filtro)
     .then(resultado => {
+      console.log(resultado);
       this.pessoas = resultado.pessoas;
       this.totalRegistros = resultado.totalElementos;
     })
