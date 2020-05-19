@@ -13,7 +13,8 @@
   },
   "private": true,
   "resolutions": {
-    "minimist": "^1.2.3"
+    "minimist": "^1.2.3",
+    "@babel/preset-env": "7.5.5"
   },
   "dependencies": {
     "@angular/animations": "~8.2.14",
@@ -26,6 +27,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@auth0/angular-jwt": "^4.0.0",
+    "@babel/compat-data": "^7.8.0",
     "@fullcalendar/core": "^4.4.0",
     "chart.js": "^2.9.3",
     "moment": "^2.24.0",
