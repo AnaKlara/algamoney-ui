@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
-
 import 'rxjs/operator/toPromise';
 import * as moment from 'moment';
 
+import { MoneyHttp } from '../seguranca/money-http';
 import { environment } from './../../environments/environment';
 
 @Injectable()
@@ -12,20 +11,21 @@ export class DashboardService {
 
   lancamentosUrl: string;
 
-  constructor(private http: HttpClient  ) {
+  constructor(private http: MoneyHttp ) {
     this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
   }
 
   lancamentosPorCategoria(): Promise<Array<any>> {
-    return this.http.get(`${this.lancamentosUrl}/estatisticas/por-categoria`)
-      .toPromise()
-      .then(response => response as Array<any> ) ;
+    return this.http.get<Array<any>>(`${this.lancamentosUrl}/estatisticas/por-categoria`)
+      .toPromise();
   }
 
   lancamentosPorDia(): Promise<Array<any>> {
     return this.http.get(`${this.lancamentosUrl}/estatisticas/por-dia`)
       .toPromise()
       .then(response => {
+        console.log("Printando");
+        console.log(response);
         const dados = response as Array<any>;
         this.converterStringsParaDatas(dados);
 

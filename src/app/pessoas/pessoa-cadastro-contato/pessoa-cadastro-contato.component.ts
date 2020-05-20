@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
-import { Contato, Pessoa } from '../../core/model';
+import { Contato } from '../../core/model';
 
 @Component({
   selector: 'app-pessoa-cadastro-contato',
@@ -32,7 +32,7 @@ export class PessoaCadastroContatoComponent implements OnInit {
     this.contatoIndex = index;
   }
 
-  confirmarContato(frm: FormControl) {
+  confirmarContato(frm: NgForm) {
     this.contatos[this.contatoIndex] = this.clonarContato(this.contato);
     this.exbindoFormularioContato = false;
     frm.reset();

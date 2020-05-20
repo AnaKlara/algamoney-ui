@@ -1,48 +1,45 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
-import { InputTextModule, ButtonModule } from 'primeng';
-import { JwtModule, JwtHelperService  } from '@auth0/angular-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
-import { LoginFormComponent } from './login-form/login-form.component';
-import { SharedModule } from '../shared/shared.module';
-import { SegurancaRoutingModule } from './seguranca-routing.module';
-import { MoneyHttpInterceptor } from './http-interceptor';
 import { AuthGuard } from './auth.guard';
+import { LogoutService } from './logout.service';
+import { AuthService } from './auth.service';
+import { MoneyHttp } from './money-http';
+import { SegurancaRoutingModule } from './seguranca-routing.module';
+import { LoginFormComponent } from './login-form/login-form.component';
 import { environment } from '../../environments/environment';
 
-export function tokenGetter(): string {
+export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 @NgModule({
-  declarations: [LoginFormComponent],
   imports: [
     CommonModule,
     FormsModule,
 
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: environment.whitelistedDomains,
+        blacklistedRoutes: environment.blacklistedRoutes
+      }
+    }),
     InputTextModule,
     ButtonModule,
-    HttpClientModule,
-    JwtModule.forRoot({  config: {
-        tokenGetter , // tokenGetter: tokenGetter,
-        whitelistedDomains: environment.whitelistedDomains,//lista de dominios que o token será enviado (não pode ser enviado para qualquer lugar)
-        blacklistedRoutes: environment.blacklistedRoutes
 
-     } } ),
-    SharedModule,
+
     SegurancaRoutingModule
   ],
+  declarations: [LoginFormComponent],
   providers: [
-    JwtHelperService,
-    {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MoneyHttpInterceptor,
-        multi: true
-    },
-    AuthGuard
+    AuthGuard,
+    LogoutService
   ]
 })
 export class SegurancaModule { }

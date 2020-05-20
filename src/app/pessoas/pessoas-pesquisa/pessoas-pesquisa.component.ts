@@ -1,11 +1,10 @@
-import { PessoaService, PessoaFiltro  } from './../pessoa.service';
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent, Table, ConfirmationService } from 'primeng';
-import { ToastyService } from 'ng2-toasty';
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
-import { Title } from '@angular/platform-browser';
+import { MessageService, ConfirmationService, LazyLoadEvent } from 'primeng/api';
 
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { PessoaService, PessoaFiltro  } from './../pessoa.service';
 @Component({
   selector: 'app-pessoas-pesquisa',
   templateUrl: './pessoas-pesquisa.component.html',
@@ -18,15 +17,15 @@ export class PessoasPesquisaComponent implements OnInit {
   filtro = new PessoaFiltro();
   totalRegistros = 0;
 
-  @ViewChild('tabela', {static: true}) grid: Table;
+  @ViewChild('tabela', { static: true }) grid;
 
 
   // vamos injetar o serviço de busca por pessoas
 constructor(
   private pessoaService: PessoaService,
-  private toasty: ToastyService,
   private confirmation: ConfirmationService,
   private errorHandler: ErrorHandlerService,
+  private messageService: MessageService,
   private title: Title,
     ) { }
 
@@ -72,7 +71,7 @@ constructor(
     this.pessoaService.excluir(lancamento.codigo)
       .then(() => {
         this.grid.reset();
-        this.toasty.success('Pessoa excluída com sucesso!');
+        this.messageService.add({ severity: 'success', detail: 'Pesssoa excluída com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -88,7 +87,8 @@ constructor(
 
     this.pessoaService.atualizaPropiedadeAtivo(codigo, setTo)
     .then(  () => {
-      this.toasty.success(`Pessoa atualizada com sucesso!`);
+      const acao = setTo ? 'ativada' : 'desativada';
+      this.messageService.add({ severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
       this.pesquisar(this.filtro.pagina);
     })
     .catch(erro => this.errorHandler.handle(erro));

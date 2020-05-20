@@ -1,8 +1,12 @@
-import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
+
 import * as moment from 'moment';
+import 'rxjs/add/operator/toPromise';
+
 import { Lancamento } from '../core/model';
+import { environment } from './../../environments/environment';
+import { MoneyHttp } from '../seguranca/money-http';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -18,7 +22,7 @@ export class LancamentoService {
   lancamentosUrl: string; // 'http://localhost:8080/lancamentos';
 
   constructor(
-    private http: HttpClient,
+    private http: MoneyHttp,
     ) {
       this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
      }
@@ -57,7 +61,7 @@ export class LancamentoService {
 
     // return this.http.get(`${this.lancamentosUrl}?resumo`, { headers , params})
     // {headers: headers, params:params}
-    return this.http.get(`${this.lancamentosUrl}?resumo`, { params })
+    return this.http.get<any>(`${this.lancamentosUrl}?resumo`, { params })
      .toPromise()
       // tslint:disable-next-line: no-string-literal
       .then(response => {
@@ -85,29 +89,19 @@ export class LancamentoService {
   adicionar(lancamento: Lancamento): Promise<Lancamento> {
     this.converterStringsParaDatas([lancamento]);
     console.log(lancamento);
-    /*
-    const headers = new HttpHeaders()
-    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
-    // admin@algamoney.com:admin base64 encoded
-    .append('Content-Type', 'application/json');
-    */
+    // TODO: verify if the two line above is necessery yet
     return this.http.post<Lancamento>(this.lancamentosUrl, lancamento ) // , { headers })
       .toPromise();
   }
 
   atualizar(lancamento: Lancamento): Promise<Lancamento> {
 
-    this.converterStringsParaDatas([lancamento]);
-    /*
-    const headers = new HttpHeaders()
-    .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
-    // admin@algamoney.com:admin base64 encoded
-    .append('Content-Type', 'application/json');
-    */
+    this.converterStringsParaDatas([lancamento]); // TODO
+
     return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento ) //, { headers })
       .toPromise()
       .then(response => {
-        const lancamentoAlterado = response as Lancamento;
+        const lancamentoAlterado = response;
         // this.converterStringsParaDatas([lancamentoAlterado]);
         console.log('Lançamento atualizado com sucesso! No banco temos o seguinte:');
         console.log(lancamentoAlterado);
@@ -118,10 +112,10 @@ export class LancamentoService {
   buscarPorCodigo(codigo: number): Promise<Lancamento> {
     // const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
                                     // admin@algamoney.com:admin base64 encoded
-    return this.http.get(`${this.lancamentosUrl}/${codigo}` ) // , { headers }) // {headers: headers, params:params}
+    return this.http.get<Lancamento>(`${this.lancamentosUrl}/${codigo}` ) // , { headers }) // {headers: headers, params:params}
       .toPromise()
       .then(response => {
-        const lancamento = response as Lancamento;
+        const lancamento = response;
         // this.converterStringsParaDatas([lancamento]);
         return lancamento;
       });

@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
+
+import 'rxjs/add/operator/toPromise';
 
 import { environment } from './../../environments/environment';
 import { Pessoa, Estado, Cidade } from '../core/model';
+import { MoneyHttp } from '../seguranca/money-http';
 
 export class PessoaFiltro {
   nome: string;
@@ -17,34 +20,27 @@ export class PessoaService {
   estadosUrl : string;
   cidadesUrl : string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: MoneyHttp
+    ) {
     this.pessoasUrl = `${environment.apiUrl}/pessoas`;
     this.estadosUrl = `${environment.apiUrl}/estados`;
     this.cidadesUrl = `${environment.apiUrl}/cidades`;
    }
 
   pesquisar(filtro: PessoaFiltro): Promise<any> {
-    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-                                                               // admin@algamoney.com:admin base64 encoded
-    /* HttpParams é um componente imutável,
-    o que significa que toda alteração feita em um objeto deste tipo,
-    irá resultar em um outro objeto novo e não irá alterar a instância atual.
-    Portanto, toda vez que chamarmos um método deste componente que deve alterar o seu estado,
-    precisamos fazer uma nova atribuição... LET
-    */
+    
     let params = new HttpParams();
     // Precisamos reatribuir o resultado do método "set" novamente à variável "params"
-
     params = params.set('page', filtro.pagina.toString() );
     params = params.set('size', filtro.itensPorPagina.toString() );
+
 
     if (filtro.nome) {
       params = params.set('nome', filtro.nome);
     }
-    // return this.http.get(`${this.pessoasUrl}`, { headers , params}) // {headers: headers, params:params}
     return this.http.get(`${this.pessoasUrl}`, { params })
     .toPromise()
-      // tslint:disable-next-line: no-string-literal
       .then(response => {
         const pessoas = response['content'];
         const resultado = {
@@ -68,19 +64,19 @@ export class PessoaService {
 
 
   excluir(codigo: number): Promise<void> {
-    return this.http.delete(`${this.pessoasUrl}/${codigo}` ) // , { headers })
+    return this.http.delete(`${this.pessoasUrl}/${codigo}` )
           .toPromise()
           .then(() => null);
   }
 
   adicionar(pessoa: Pessoa): Promise<Pessoa> {
-    return this.http.post<Pessoa>(this.pessoasUrl, pessoa ) // , { headers })
+    return this.http.post<Pessoa>(this.pessoasUrl, pessoa ) 
       .toPromise();
   }
 
 
   atualizar(pessoa: Pessoa): Promise<Pessoa> {
-    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa ) // , { headers })
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${pessoa.codigo}`, pessoa ) 
       .toPromise()
       .then(response => {
         const pessoaAlterada = response as Pessoa;
@@ -89,15 +85,14 @@ export class PessoaService {
   }
 
   buscarPorCodigo(codigo: number): Promise<Pessoa> {
-    return this.http.get(`${this.pessoasUrl}/${codigo}` ) // , { headers }) // {headers: headers, params:params}
+    return this.http.get(`${this.pessoasUrl}/${codigo}` )
       .toPromise()
       .then();
   }
 
   atualizaPropiedadeAtivo(codigo: number , setTo: boolean) {
-    const headers = new HttpHeaders().append('Content-Type', 'application/Json');
     console.log(setTo)
-    return this.http.put<Pessoa>(`${this.pessoasUrl}/${codigo}/ativo`, setTo , { headers })
+    return this.http.put<Pessoa>(`${this.pessoasUrl}/${codigo}/ativo`, setTo )
       .toPromise()
       .then( status => {
         return status;

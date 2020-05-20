@@ -1,13 +1,12 @@
-import { AuthService } from './../../seguranca/auth.service';
-import { LancamentoService, LancamentoFiltro  } from './../lancamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { LazyLoadEvent, Table } from 'primeng/primeng';
-import {ConfirmationService } from 'primeng';
+// import { LazyLoadEvent, Table } from 'primeng/primeng';
+import { MessageService, ConfirmationService, LazyLoadEvent } from 'primeng/api';
 
-import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { AuthService } from './../../seguranca/auth.service';
+import { LancamentoService, LancamentoFiltro  } from './../lancamento.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -22,7 +21,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   totalRegistros = 0;
   // a propriedade static diz ao Angular em que momento as mudanças
   // deverão ser detectadas.
-  @ViewChild('tabela', {static: true}) grid: Table;
+  @ViewChild('tabela', { static: true }) grid;
 
   /*
   descricao: string;
@@ -35,7 +34,7 @@ export class LancamentosPesquisaComponent implements OnInit {
   // vamos injetar o serviço de busca por lançamentos
   constructor(
     private lancamentoService: LancamentoService,
-    private toasty: ToastyService,
+    private messageService: MessageService,
     private confirmation: ConfirmationService,
     private errorHandler: ErrorHandlerService,
     private title: Title,
@@ -80,7 +79,7 @@ export class LancamentosPesquisaComponent implements OnInit {
     this.lancamentoService.excluir(lancamento.codigo)
       .then(() => {
         this.grid.reset();
-        this.toasty.success('Lançamento excluído com sucesso!');
+        this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' });
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

@@ -26,6 +26,7 @@ export class LoginFormComponent implements OnInit {
       this.router.navigate(['/dashboard']);
     })
     .catch(erro => {
+      console.log("Talvez erro no login");
       this.errorHandler.handle(erro);
     });
   }

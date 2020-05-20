@@ -1,24 +1,16 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import { LoginFormComponent } from '../seguranca/login-form/login-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginFormComponent },
+  { path: 'login', component: LoginFormComponent }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ],
-  exports: [
-    RouterModule,
-    // não é necessário mas é bom exportar o router module
-  ]
-
+  exports: [RouterModule]
 })
-
 export class SegurancaRoutingModule { }
-
-
-

@@ -12,7 +12,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
@@ -39,7 +39,7 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
-    CurrencyMaskModule,
+    NgxCurrencyModule,
     FileUploadModule,
     ProgressSpinnerModule,
 

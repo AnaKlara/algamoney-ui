@@ -1,13 +1,14 @@
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpClientModule } from '@angular/common/http';
 
-import { ToastyModule } from 'ng2-toasty';
-import { ConfirmDialogModule, ConfirmationService } from 'primeng';
-
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule, ConfirmationService, MessageService } from 'primeng';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
@@ -20,39 +21,46 @@ import { PessoaService } from '../pessoas/pessoa.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { DashboardService } from './../dashboard/dashboard.service';
 import { RelatoriosService } from '../relatorios/relatorios.service';
+import { MoneyHttp } from '../seguranca/money-http';
+
 
 
 registerLocaleData(localePt);
 
-
-/*
-PQ não precisamos exportar o componente PaginaNaoEncontradaComponent
-*/
-
 @NgModule({
-  declarations: [ NavbarComponent, PaginaNaoEncontradaComponent, NaoAutorizadoComponent ],
+  declarations: [
+     NavbarComponent, 
+     PaginaNaoEncontradaComponent, 
+     NaoAutorizadoComponent 
+    ],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule,
 
-    ToastyModule.forRoot(),
+    ToastModule,
     ConfirmDialogModule,
   ],
   exports: [
     NavbarComponent,
-    ToastyModule,
+    ToastModule,
     ConfirmDialogModule,
   ],
   providers: [
-    ErrorHandlerService,
-    ConfirmationService,
-    Title,
-    AuthService,
     LancamentoService,
     PessoaService,
     CategoriaService,
     DashboardService,
-    RelatoriosService
+    RelatoriosService,
+    ErrorHandlerService,
+    AuthService,
+    MoneyHttp,
+
+    ConfirmationService,
+    MessageService,
+    JwtHelperService,
+    Title,
+    { provide: LOCALE_ID, useValue: 'pt' }
   ]
 })
 

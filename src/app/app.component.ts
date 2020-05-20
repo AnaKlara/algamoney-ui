@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { ToastyConfig } from 'ng2-toasty';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,11 @@ import { ToastyConfig } from 'ng2-toasty';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'algamoney-ui';
+  title = 'algamoney-UI';
 
   constructor(
-    private toastyConfig: ToastyConfig,
     private router: Router
     ) {
-    this.toastyConfig.theme = 'bootstrap';
   }
 
   exibindoNavbar() {

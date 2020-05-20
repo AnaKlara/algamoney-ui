@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { AuthService } from './../../seguranca/auth.service';
+import { LogoutService } from 'src/app/seguranca/logout.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
+    private logoutService: LogoutService,
     private errorHandler: ErrorHandlerService,
     private router: Router
   ) { }
@@ -24,11 +26,13 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout()
+    this.logoutService.logout()
       .then( () => {
         this.router.navigate(['/login']);
       })
-      .catch(erro => this.errorHandler.handle(erro) );
+      .catch(erro => {
+        console.log("Erro no menu");
+        this.errorHandler.handle(erro) });
   }
 
 }

@@ -1,28 +1,24 @@
-import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // é uma boa prática importar explicitamente o to promise
-import 'rxjs';
+import 'rxjs/add/operator/toPromise';
+
+import { environment } from './../../environments/environment';
+import { MoneyHttp } from '../seguranca/money-http';
 
 @Injectable()
 export class CategoriaService {
 
-
   categoriasUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: MoneyHttp) {
     this.categoriasUrl = `${environment.apiUrl}/categorias`;
   }
 
-
   listarCategorias(): Promise<any> {
-    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-                                    // admin@algamoney.com:admin base64 encoded
-    return this.http.get(`${this.categoriasUrl}`, { headers })
-      .toPromise()
-      .then(response => response );
+    return this.http.get(this.categoriasUrl)
+      .toPromise();
   }
-
 
 }
