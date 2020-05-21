@@ -8,9 +8,21 @@
 
  .login-box{
   border-radius: .8em;
-  margin-top: 10vh;
-  background-color: rgba(204, 247, 255, 0.4);
+  margin-top: 6vh;
+  background-color: rgba(37, 55, 58, 0.637);
+  color: white;
  }
+
+
+@media (max-width: 600px) 
+{
+  
+ .login-box{
+  margin-left: 5vw;
+  margin-right: 5vw;
+ }
+}
+
 
 .login{
   text-align: center;
