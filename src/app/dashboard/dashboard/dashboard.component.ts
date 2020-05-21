@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 import { DashboardService } from './../dashboard.service';
 
@@ -29,11 +30,14 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-    private decimalPipe: DecimalPipe) { }
+    private title: Title,
+    private decimalPipe: DecimalPipe
+    ) { }
 
   ngOnInit() {
     this.configurarGraficoPizza();
     this.configurarGraficoLinha();
+    this.title.setTitle('Algamoney - Dashborad');
   }
 
   configurarGraficoPizza() {

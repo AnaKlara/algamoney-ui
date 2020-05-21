@@ -36,11 +36,12 @@ export class AuthService {
       .catch(response => {
         
         if (response.status === 400) {
-          if (response.error === 'invalid_grant') {
+          if (response.error.error === 'invalid_grant') {
             return Promise.reject('Usuário ou senha inválida!');
           }
         }
         if (response.status === 401) {
+          console.log(response.error.error);
           console.log('Erro com os dados de login da aplicação cliente!');
         }
 
@@ -55,8 +56,7 @@ export class AuthService {
 
     const body = 'grant_type=refresh_token';
 
-    return this.http.post<any>(this.oauthTokenUrl, body,
-        { headers, withCredentials: true })
+    return this.http.post<any>(this.oauthTokenUrl,body,{ headers:headers, withCredentials: true })
       .toPromise()
       .then(response => {
         this.armazenarToken(response.access_token);

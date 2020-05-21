@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
-  whitelistedDomains: [new RegExp('/localhost:8080/') ],//lista de dominios que o token será enviado (não pode ser enviado para qualquer lugar)
-  blacklistedRoutes: [ new RegExp('/\/oauth\/token/')]
+  whitelistedDomains: [new RegExp('localhost:8080') ],//lista de dominios que o token será enviado (não pode ser enviado para qualquer lugar)
+  blacklistedRoutes: [ new RegExp('\/oauth\/token')]
 };
 
 /*
