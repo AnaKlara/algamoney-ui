@@ -4,6 +4,9 @@ import { Title } from '@angular/platform-browser';
 
 import { DashboardService } from './../dashboard.service';
 
+/**
+ * Dashboard component
+ */
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -28,18 +31,29 @@ export class DashboardComponent implements OnInit {
     }
   };
 
+
+  /**
+  * Construtor do componente Dashboard
+  * @constructor
+  */
   constructor(
     private dashboardService: DashboardService,
     private title: Title,
     private decimalPipe: DecimalPipe
     ) { }
 
+    /**
+    *
+    */
   ngOnInit() {
     this.configurarGraficoPizza();
     this.configurarGraficoLinha();
     this.title.setTitle('Algamoney - Dashborad');
   }
 
+  /**
+ * Pede o fornecimento de dados para o serviço e mapeia para adequá-los ao componente do gráfico.
+ */
   configurarGraficoPizza() {
     this.dashboardService.lancamentosPorCategoria()
       .then(dados => {
@@ -59,6 +73,9 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  /**
+  * Pede o fornecimento de dados para o serviço e mapeia para adequá-los ao componente do gráfico.
+  */
   configurarGraficoLinha() {
     this.dashboardService.lancamentosPorDia()
       .then(dados => {
@@ -85,6 +102,12 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  /**
+  * Pede o fornecimento de dados para o serviço e mapeia para adequá-los ao componente do gráfico.
+  * @param {} dados - Dados do mês
+  * @param {} diasDoMes - Lista com os dias do mês
+  * @returns {Number} Totais
+  */
   private totaisPorCadaDiaMes(dados, diasDoMes) {
     const totais: number[] = [];
     for (const dia of diasDoMes) {
@@ -104,6 +127,9 @@ export class DashboardComponent implements OnInit {
     return totais;
   }
 
+  /**
+  * Faz a captura do dia e mês para a montagem de parâmetros em outras funções.
+  */
   private configurarDiasMes() {
     const mesReferencia = new Date();
     mesReferencia.setMonth(mesReferencia.getMonth() + 1);
@@ -116,7 +142,8 @@ export class DashboardComponent implements OnInit {
     for (let i = 1; i <= quantidade; i++) {
       dias.push(i);
     }
-
     return dias;
   }
+
+
 }

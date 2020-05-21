@@ -1,0 +1,1125 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>algamoney-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">algamoney-ui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>PessoasPesquisaComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-pessoas-pesquisa</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./pessoas-pesquisa.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./pessoas-pesquisa.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filtro">filtro</a>
+                            </li>
+                            <li>
+                                <a href="#grid">grid</a>
+                            </li>
+                            <li>
+                                <a href="#pessoas">pessoas</a>
+                            </li>
+                            <li>
+                                <a href="#totalRegistros">totalRegistros</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#aoMudarPagina">aoMudarPagina</a>
+                            </li>
+                            <li>
+                                <a href="#atualizaPropAtivo">atualizaPropAtivo</a>
+                            </li>
+                            <li>
+                                <a href="#confirmarExclusao">confirmarExclusao</a>
+                            </li>
+                            <li>
+                                <a href="#excluir">excluir</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#pesquisar">pesquisar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(pessoaService: <a href="../injectables/PessoaService.html">PessoaService</a>, confirmation: ConfirmationService, errorHandler: <a href="../injectables/ErrorHandlerService.html">ErrorHandlerService</a>, messageService: MessageService, title: <a href="https://angular.io/api/platform-browser/Title" target="_blank">Title</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>pessoaService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PessoaService.html" target="_self" >PessoaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>confirmation</td>
+                                                  
+                                                        <td>
+                                                                    <code>ConfirmationService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>errorHandler</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ErrorHandlerService.html" target="_self" >ErrorHandlerService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>title</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/platform-browser/Title" target="_blank" >Title</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="aoMudarPagina"></a>
+                    <span class="name">
+                        <b>
+                            aoMudarPagina
+                        </b>
+                        <a href="#aoMudarPagina"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>aoMudarPagina(event: LazyLoadEvent)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>LazyLoadEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="atualizaPropAtivo"></a>
+                    <span class="name">
+                        <b>
+                            atualizaPropAtivo
+                        </b>
+                        <a href="#atualizaPropAtivo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>atualizaPropAtivo(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, pessoaStatus: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>codigo</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>pessoaStatus</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmarExclusao"></a>
+                    <span class="name">
+                        <b>
+                            confirmarExclusao
+                        </b>
+                        <a href="#confirmarExclusao"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmarExclusao(pessoa: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pessoa</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="excluir"></a>
+                    <span class="name">
+                        <b>
+                            excluir
+                        </b>
+                        <a href="#excluir"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>excluir(lancamento: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lancamento</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pesquisar"></a>
+                    <span class="name">
+                        <b>
+                            pesquisar
+                        </b>
+                        <a href="#pesquisar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>pesquisar(pagina: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pagina</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>0</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filtro"></a>
+                        <span class="name">
+                            <b>
+                            filtro</b>
+                            <a href="#filtro"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new PessoaFiltro()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="grid"></a>
+                        <span class="name">
+                            <b>
+                            grid</b>
+                            <a href="#grid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;tabela&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pessoas"></a>
+                        <span class="name">
+                            <b>
+                            pessoas</b>
+                            <a href="#pessoas"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[  ]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalRegistros"></a>
+                        <span class="name">
+                            <b>
+                            totalRegistros</b>
+                            <a href="#totalRegistros"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pessoas/pessoas-pesquisa/pessoas-pesquisa.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Title } from &#x27;@angular/platform-browser&#x27;;
+import { Component, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+
+import { MessageService, ConfirmationService, LazyLoadEvent } from &#x27;primeng/api&#x27;;
+
+import { ErrorHandlerService } from &#x27;src/app/core/error-handler.service&#x27;;
+import { PessoaService, PessoaFiltro  } from &#x27;./../pessoa.service&#x27;;
+@Component({
+  selector: &#x27;app-pessoas-pesquisa&#x27;,
+  templateUrl: &#x27;./pessoas-pesquisa.component.html&#x27;,
+  styleUrls: [&#x27;./pessoas-pesquisa.component.css&#x27;]
+})
+export class PessoasPesquisaComponent implements OnInit {
+
+  // variáveis de instância
+  pessoas &#x3D; [  ];
+  filtro &#x3D; new PessoaFiltro();
+  totalRegistros &#x3D; 0;
+
+  @ViewChild(&#x27;tabela&#x27;, { static: true }) grid;
+
+
+  // vamos injetar o serviço de busca por pessoas
+constructor(
+  private pessoaService: PessoaService,
+  private confirmation: ConfirmationService,
+  private errorHandler: ErrorHandlerService,
+  private messageService: MessageService,
+  private title: Title,
+    ) { }
+
+  ngOnInit() {
+      // this.pesquisar(); o evento Lazyload já dispara a chamada da função automaticamente
+      this.title.setTitle(&#x27;Pessoas&#x27;);
+  }
+
+  pesquisar(pagina &#x3D; 0) {
+
+  this.filtro.pagina &#x3D; pagina;
+
+  this.pessoaService.pesquisar(this.filtro)
+    .then(resultado &#x3D;&gt; {
+      console.log(resultado);
+      this.pessoas &#x3D; resultado.pessoas;
+      this.totalRegistros &#x3D; resultado.totalElementos;
+    })
+    .catch(erro &#x3D;&gt; this.errorHandler.handle(erro));
+  }
+
+
+  aoMudarPagina( event: LazyLoadEvent ) {
+
+    const pagina &#x3D; event.first / event.rows;
+    this.pesquisar(pagina);
+  }
+
+
+
+
+  confirmarExclusao(pessoa: any) {
+    this.confirmation.confirm({
+      message: &#x27;Tem certeza que dezeja excluir?&#x27;,
+      accept: () &#x3D;&gt; {
+        this.excluir(pessoa);
+      }
+    });
+  }
+
+
+  excluir(lancamento: any) {
+    this.pessoaService.excluir(lancamento.codigo)
+      .then(() &#x3D;&gt; {
+        this.grid.reset();
+        this.messageService.add({ severity: &#x27;success&#x27;, detail: &#x27;Pesssoa excluída com sucesso!&#x27; });
+      })
+      .catch(erro &#x3D;&gt; this.errorHandler.handle(erro));
+  }
+
+  atualizaPropAtivo(codigo: number, pessoaStatus: boolean) {
+
+    let setTo: boolean;
+    if (pessoaStatus) {
+      setTo &#x3D; false;
+    } else {
+      setTo &#x3D; true;
+    }
+
+    this.pessoaService.atualizaPropiedadeAtivo(codigo, setTo)
+    .then(  () &#x3D;&gt; {
+      const acao &#x3D; setTo ? &#x27;ativada&#x27; : &#x27;desativada&#x27;;
+      this.messageService.add({ severity: &#x27;success&#x27;, detail: &#x60;Pessoa ${acao} com sucesso!&#x60; });
+      this.pesquisar(this.filtro.pagina);
+    })
+    .catch(erro &#x3D;&gt; this.errorHandler.handle(erro));
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+  &lt;div class&#x3D;&quot;ui-g&quot; &gt;
+
+    &lt;div class&#x3D;&quot;ui-g-12&quot;&gt;
+      &lt;h1&gt;Pessoas&lt;/h1&gt;
+    &lt;/div&gt;
+
+    &lt;form autocomplete&#x3D;&quot;off&quot; (submit)&#x3D;&quot;pesquisar()&quot;&gt;
+      &lt;div class&#x3D;&quot;ui-g-12 ui-fluid&quot;&gt;
+        &lt;label&gt;Nome&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; pInputText name&#x3D;&quot;nome&quot; [(ngModel)]&#x3D;&quot;filtro.nome&quot;&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;ui-g-12&quot;&gt;
+        &lt;button pButton type&#x3D;&quot;submit&quot; label&#x3D;&quot;Pesquisar&quot; &gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+
+
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;ui-g&quot;&gt;
+    &lt;div class&#x3D;&quot;ui-g-12&quot;&gt;
+      &lt;p-table [value]&#x3D;&quot;pessoas&quot; [paginator]&#x3D;&quot;true&quot;
+      emptyMessage&#x3D;&quot;Nenhuma pessoa encontrada&quot;
+      [rows]&#x3D;&quot;filtro.itensPorPagina&quot; [responsive]&#x3D;&quot;true&quot;
+      [lazy]&#x3D;&quot;true&quot; [totalRecords]&#x3D;&quot;totalRegistros&quot;
+      (onLazyLoad)&#x3D;&quot;aoMudarPagina($event)&quot; #tabela
+      &gt;
+
+        &lt;ng-template let-pessoa  pTemplate&#x3D;&quot;header&quot;&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Nome&lt;/th&gt;
+                &lt;th&gt;Cidade&lt;/th&gt;
+                &lt;th&gt;Estado&lt;/th&gt;
+                &lt;th&gt;Status&lt;/th&gt;
+                &lt;th class&#x3D;&quot;col-valor-header&quot;&gt;Ações&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/ng-template&gt;
+
+        &lt;ng-template pTemplate&#x3D;&quot;body&quot; let-pessoa&gt;
+          &lt;tr&gt;
+            &lt;td&gt;
+              {{pessoa.nome}}
+            &lt;/td&gt;
+
+            &lt;td&gt;
+              {{pessoa.endereco.cidade?.nome}}
+            &lt;/td&gt;
+
+            &lt;td&gt;
+              {{pessoa.endereco.cidade?.estado.nome}}
+            &lt;/td&gt;
+
+            &lt;td&gt;
+              &lt;!--Diretiva pTooltip (PrimeNG): mostra informação adicional quando o mouse está em cima--&gt;
+              &lt;a (click)&#x3D;&quot;atualizaPropAtivo(pessoa.codigo, pessoa.ativo)&quot; [pTooltip]&#x3D;&quot;pessoa.ativo ? &#x27;Desativar&#x27; : &#x27;Ativar&#x27; &quot; tooltipPosition&#x3D;&quot;top&quot;&gt;{{ pessoa.ativo ? &#x27;Ativo&#x27; : &#x27;Inativo&#x27;}}&lt;/a&gt;
+            &lt;/td&gt;
+
+            &lt;td class&#x3D;&quot;col-acoes&quot;&gt;
+              &lt;button class&#x3D;&quot;but-action&quot; pButton icon&#x3D;&quot;pi pi-pencil&quot; pTooltip&#x3D;&quot;Editar&quot;
+              tooltipPosition&#x3D;&quot;bottom&quot; [routerLink]&#x3D;&quot;[&#x27;/pessoas&#x27;,pessoa.codigo]&quot; &gt;&lt;/button&gt;
+
+              &lt;button pButton icon&#x3D;&quot;pi pi-trash&quot; pTooltip&#x3D;&quot;Apagar&quot; tooltipPosition&#x3D;&quot;bottom&quot;
+                  (click)&#x3D;&quot;confirmarExclusao(pessoa)&quot;&gt;&lt;/button&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/ng-template&gt;
+      &lt;/p-table&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;ui-g-12&quot;&gt;
+      &lt;a pButton routerLink&#x3D;&quot;/pessoas/nova&quot; label&#x3D;&quot;Nova Pessoa&quot;&gt;&lt;/a&gt;
+    &lt;/div&gt;
+
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./pessoas-pesquisa.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.but-action{
+  margin-right: 2px;
+  }
+  a {
+    text-decoration: none;
+  }
+
+  a:hover, a:focus {
+    text-decoration: none;
+    font-weight: bold;
+  }
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">  <div class="ui-g" >    <div class="ui-g-12">      <h1>Pessoas</h1>    </div>    <form autocomplete="off" (submit)="pesquisar()">      <div class="ui-g-12 ui-fluid">        <label>Nome</label>        <input type="text" pInputText name="nome" [(ngModel)]="filtro.nome">      </div>      <div class="ui-g-12">        <button pButton type="submit" label="Pesquisar" ></button>      </div>    </form>  </div>  <div class="ui-g">    <div class="ui-g-12">      <p-table [value]="pessoas" [paginator]="true"      emptyMessage="Nenhuma pessoa encontrada"      [rows]="filtro.itensPorPagina" [responsive]="true"      [lazy]="true" [totalRecords]="totalRegistros"      (onLazyLoad)="aoMudarPagina($event)" #tabela      >        <ng-template let-pessoa  pTemplate="header">            <tr>                <th>Nome</th>                <th>Cidade</th>                <th>Estado</th>                <th>Status</th>                <th class="col-valor-header">Ações</th>            </tr>        </ng-template>        <ng-template pTemplate="body" let-pessoa>          <tr>            <td>              {{pessoa.nome}}            </td>            <td>              {{pessoa.endereco.cidade?.nome}}            </td>            <td>              {{pessoa.endereco.cidade?.estado.nome}}            </td>            <td>              <!--Diretiva pTooltip (PrimeNG): mostra informação adicional quando o mouse está em cima-->              <a (click)="atualizaPropAtivo(pessoa.codigo, pessoa.ativo)" [pTooltip]="pessoa.ativo ? \'Desativar\' : \'Ativar\' " tooltipPosition="top">{{ pessoa.ativo ? \'Ativo\' : \'Inativo\'}}</a>            </td>            <td class="col-acoes">              <button class="but-action" pButton icon="pi pi-pencil" pTooltip="Editar"              tooltipPosition="bottom" [routerLink]="[\'/pessoas\',pessoa.codigo]" ></button>              <button pButton icon="pi pi-trash" pTooltip="Apagar" tooltipPosition="bottom"                  (click)="confirmarExclusao(pessoa)"></button>            </td>          </tr>        </ng-template>      </p-table>    </div>    <div class="ui-g-12">      <a pButton routerLink="/pessoas/nova" label="Nova Pessoa"></a>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'LancamentoCadastroComponent', 'selector': 'app-lancamento-cadastro'},{'name': 'LancamentosPesquisaComponent', 'selector': 'app-lancamentos-pesquisa'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MessageComponent', 'selector': 'app-message'},{'name': 'NaoAutorizadoComponent', 'selector': 'app-nao-autorizado'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'PaginaNaoEncontradaComponent', 'selector': 'app-pagina-nao-encontrada'},{'name': 'PessoaCadastroComponent', 'selector': 'app-pessoa-cadastro'},{'name': 'PessoaCadastroContatoComponent', 'selector': 'app-pessoa-cadastro-contato'},{'name': 'PessoasPesquisaComponent', 'selector': 'app-pessoas-pesquisa'},{'name': 'RelatorioLancamentosComponent', 'selector': 'app-relatorio-lancamentos'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PessoasPesquisaComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PessoasPesquisaComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
