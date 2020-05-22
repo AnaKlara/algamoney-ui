@@ -6,8 +6,8 @@ Este projeto foi criado om o objetivo de servir como cliente da [API algamoney](
 
 Este projeto foi criado com:
 - [Angular CLI](https://github.com/angular/angular-cli) versão 9.1.6
-- [Node]() versão 12.16.3
-- [Angular]() versão  9.1.7  
+- [Node](https://nodejs.org/en/) versão 12.16.3
+- [Angular](https://angular.io/) versão  9.1.7  
 
 ## Como instalar
 
@@ -16,7 +16,8 @@ Este projeto foi criado com:
 
 ## Como executar
 
-Execute `ng serve` para executar a versão de desenvolvimento. Depois acesse `http://localhost:4200/`.
+1. Confirure o arquivo `/src/environments/environmentExample.ts` com os parâmetros da API e renomeie para `environment.ts`.
+2. Execute `ng serve` para executar a versão de desenvolvimento. Depois acesse `http://localhost:4200/`.
 
 ## Build
 

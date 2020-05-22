@@ -48,3 +48,6 @@ Thumbs.db
 
 # Compodoc Folder
 /documentation
+
+#passwords and keys
+/src/environments/environment.ts
